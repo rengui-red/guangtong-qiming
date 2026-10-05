@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -271,3 +272,278 @@
 
 
 
+=======
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>光通启明 · 汉字光宇世界</title>
+    <meta name="author" content="上海易通和维科技有限责任公司">
+    <meta name="description" content="光通启明，汉字文明的时代之光。以汉字为根，以仁为魂，以AI为用的开源项目。">
+    <style>
+        :root {
+            --color-bg: #0a0a0a;
+            --color-gold: #ffaa00;
+            --color-paper: #f0e6d0;
+            --color-gray: #999999;
+            --color-border: rgba(255, 170, 0, 0.25);
+            --color-card-bg: rgba(255, 255, 255, 0.03);
+            --font-serif: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+            --font-sans: "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-paper);
+            font-family: var(--font-serif);
+            line-height: 1.8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 极简光晕背景 */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw; height: 80vw;
+            background: radial-gradient(circle, rgba(255,170,0,0.06) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+            animation: breathe 8s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+            width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* 主标题区 */
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--color-gold);
+            letter-spacing: 0.4rem;
+            text-shadow: 0 0 30px rgba(255, 170, 0, 0.4);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            letter-spacing: 0.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .tagline {
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            color: var(--color-gold);
+            font-style: italic;
+            letter-spacing: 0.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero .motto {
+            font-size: 1rem;
+            color: var(--color-gray);
+            border-left: 2px solid var(--color-gold);
+            border-right: 2px solid var(--color-gold);
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            border-radius: 4px;
+        }
+
+        /* 卡片网格 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--color-gold);
+            box-shadow: 0 0 30px rgba(255, 170, 0, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .card::after {
+            content: "→";
+            position: absolute;
+            top: 1.5rem; right: 1.5rem;
+            color: var(--color-gold);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover::after { opacity: 1; }
+
+        .card h3 {
+            font-size: 1.3rem;
+            color: var(--color-gold);
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.1rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--color-gray);
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
+        .card .meta {
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: rgba(255, 170, 0, 0.6);
+            font-family: var(--font-sans);
+        }
+
+        /* 底部信息 */
+        .footer {
+            text-align: center;
+            border-top: 1px solid var(--color-border);
+            padding-top: 2rem;
+            margin-top: auto;
+            font-size: 0.85rem;
+            color: var(--color-gray);
+            animation: fadeIn 2s ease;
+        }
+
+        .footer a {
+            color: var(--color-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover { color: var(--color-gold); }
+
+        .footer .company {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .footer .credit-code {
+            font-family: var(--font-sans);
+            letter-spacing: 0.05rem;
+            color: #666;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 3rem 1.2rem; }
+            .hero { margin-bottom: 2.5rem; }
+            .hero .motto { padding: 0.5rem 1rem; font-size: 0.9rem; }
+            .grid { grid-template-columns: 1fr; gap: 1rem; }
+            .card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- 主视觉 -->
+    <div class="hero">
+        <h1>光通启明</h1>
+        <div class="subtitle">汉字光宇世界 · 开源项目</div>
+        <div class="tagline">—— 汉字文明的时代之光 ——</div>
+        <div class="motto">一画开天，仁以为心</div>
+    </div>
+
+    <!-- 入口卡片 -->
+    <div class="grid">
+        <!-- 卡片一：AI交互 -->
+        <a class="card" href="./src/chat.html">
+            <h3>与羲和对话</h3>
+            <p>唤醒汉字文明的数字守护者。输入任何一个汉字，听听羲和如何为你拆解它背后的形、音、义与人文哲思。</p>
+            <div class="meta">互动 · 汉字解源</div>
+        </a>
+
+        <!-- 卡片二：PPT演示 -->
+        <a class="card" href="./ppt/home.html">
+            <h3>项目演示文稿</h3>
+            <p>查看“光通启明”的精神内核、技术架构、商业蓝图与化育理念。十语种目录、五大专题PPT一应俱全。</p>
+            <div class="meta">展示 · 20+ 演示文稿</div>
+        </a>
+
+        <!-- 卡片三：开源代码与文档 -->
+        <a class="card" href="./docs/README.md">
+            <h3>项目文档与数据</h3>
+            <p>字源库（3755字）、文化图谱、核心系统指令、AI体规范、开发与运维手册……文档即代码，开源即共建。</p>
+            <div class="meta">代码 · 文档 · 字源库</div>
+        </a>
+
+        <!-- 卡片四：法律与公司合规 -->
+        <a class="card" href="./legal.html">
+            <h3>项目说明与合规</h3>
+            <p>关于上海易通和维科技有限责任公司、开源双协议（MIT + CC-BY 4.0）、隐私合规与AI生成内容免责声明。</p>
+            <div class="meta">主体 · 协议 · 法律合规</div>
+        </a>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <p class="company">上海易通和维科技有限责任公司</p>
+        <p class="credit-code">统一社会信用代码：91310114MAKMUW813C</p>
+        <p style="margin-top: 1rem;">
+            <a href="https://github.com/你的用户名/guangtong-qiming" target="_blank">GitHub 仓库</a> ｜
+            <a href="https://yitonghewei.com" target="_blank">官方网站</a> ｜
+            <a href="mailto:contact@yitonghewei.com">contact@yitonghewei.com</a>
+        </p>
+        <p style="margin-top: 1.5rem; font-size: 0.75rem; color: #444;">
+            © 2026 光通启明 · 汉字光宇世界
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>
+
+
+
+
+>>>>>>> a39cb4e2716866cc525c058c669b44468edc4738
