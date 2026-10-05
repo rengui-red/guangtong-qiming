@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guangtong Qiming · The Hanzi Light Universe · Presentation</title>
+<meta name="author" content="Shanghai Yitonghewei Technology Co., Ltd.">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+    font-family: "Noto Serif", "Times New Roman", serif;
+    color: #fff;
+}
+
+/* ============ 舞台 ============ */
+.stage {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem 8rem;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s;
+    background: radial-gradient(circle at 50% 40%, rgba(255,170,0,0.04), transparent 70%), #000;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ============ 背景光字底纹 ============ */
+.slide::before {
+    content: "光 明 旦 启 日 月 星 辉 曜 曦 煦 昭 映 昧 昃 昙 昪 昶 晟 晞 晢 晧 晨 普 景 晴 晶 智 暖 暗 曌";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    color: rgba(255, 220, 150, 0.02);
+    font-size: 7vw;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: pre-wrap;
+    word-break: break-all;
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(-5deg) scale(1.5);
+    letter-spacing: 2vw;
+}
+
+.slide > * { position: relative; z-index: 1; }
+
+/* ============ 文字样式 ============ */
+.title {
+    font-size: clamp(1.8rem, 4.5vw, 3.5rem);
+    font-weight: 500;
+    color: #ffaa00;
+    letter-spacing: 0.1rem;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 30px rgba(255,170,0,0.3);
+}
+
+.subtitle {
+    font-size: clamp(1.1rem, 2.2vw, 1.8rem);
+    font-weight: 300;
+    color: #f0e6d0;
+    letter-spacing: 0.08rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.body-text {
+    font-size: clamp(0.95rem, 1.6vw, 1.3rem);
+    font-weight: 300;
+    color: #ddd;
+    line-height: 2.0;
+    letter-spacing: 0.03rem;
+    max-width: 900px;
+}
+
+.body-text p { margin-bottom: 0.6rem; }
+
+.highlight {
+    color: #ffaa00;
+    font-weight: 400;
+}
+
+.quote {
+    font-size: clamp(1.2rem, 2.8vw, 2.2rem);
+    font-weight: 300;
+    font-style: italic;
+    color: #ffaa00;
+    line-height: 1.8;
+    letter-spacing: 0.08rem;
+}
+
+.footer-info {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    color: #666;
+    letter-spacing: 0.08rem;
+}
+
+.small-note {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 2rem;
+}
+
+/* ============ 大字装饰 ============ */
+.big-char {
+    font-size: clamp(5rem, 15vw, 12rem);
+    color: #ffaa00;
+    text-shadow: 0 0 60px rgba(255,170,0,0.5);
+    line-height: 1;
+    margin: 1rem 0;
+    font-family: "Noto Serif SC", serif;
+}
+
+/* ============ 数据列表 ============ */
+.data-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+    text-align: left;
+    max-width: 800px;
+}
+
+.data-item {
+    font-size: clamp(0.95rem, 1.5vw, 1.25rem);
+    color: #ddd;
+    line-height: 1.8;
+    padding-left: 1.5rem;
+    border-left: 2px solid #ffaa00;
+}
+
+.data-item.dim { color: #777; border-left-color: #444; }
+
+/* ============ 四象五碑 ============ */
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+    width: 100%;
+    max-width: 900px;
+}
+
+.grid-item {
+    border-top: 1px solid #ffaa00;
+    padding-top: 1.2rem;
+    text-align: center;
+}
+
+.grid-item .name {
+    font-size: clamp(1.1rem, 1.8vw, 1.6rem);
+    color: #ffaa00;
+    margin-bottom: 0.5rem;
+}
+
+.grid-item .desc {
+    font-size: 0.85rem;
+    color: #999;
+}
+
+.stele-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 2rem;
+    margin: 1.5rem 0;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+}
+
+.stele {
+    border-left: 2px solid #ffaa00;
+    padding-left: 1rem;
+    color: #fff;
+    font-weight: 300;
+}
+
+/* ============ 语言列表 ============ */
+.lang-row {
+    font-size: clamp(1rem, 1.7vw, 1.4rem);
+    color: #ddd;
+    line-height: 2.4;
+    letter-spacing: 0.08rem;
+}
+
+/* ============ 时间轴 ============ */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    max-width: 800px;
+    width: 100%;
+}
+
+.tl-item {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    text-align: left;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,170,0,0.15);
+}
+
+.tl-time {
+    min-width: 130px;
+    font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+    color: #ffaa00;
+    font-weight: 500;
+}
+
+.tl-content {
+    font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+    color: #ddd;
+}
+
+/* ============ 底部控制 ============ */
+.controls {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 2rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 100;
+    align-items: center;
+}
+
+.page-indicator {
+    color: #666;
+    font-family: sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    margin-right: 0.5rem;
+}
+
+.nav-btn {
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255,170,0,0.3);
+    background: rgba(0,0,0,0.5);
+    color: #ffaa00;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.nav-btn:hover {
+    background: #ffaa00;
+    color: #000;
+    border-color: #ffaa00;
+}
+
+/* ============ 进度条 ============ */
+.progress-bar {
+    position: fixed;
+    bottom: 0; left: 0;
+    height: 3px;
+    background: #ffaa00;
+    transition: width 0.4s ease;
+    z-index: 100;
+}
+
+/* ============ 响应式 ============ */
+@media (max-width: 768px) {
+    .slide { padding: 3rem 1.5rem; }
+    .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+    .controls { bottom: 1rem; right: 1rem; }
+    .tl-item { flex-direction: column; gap: 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="stage" id="stage">
+
+    <!-- 1 · Cover -->
+    <section class="slide active">
+        <h1 class="title">Guangtong Qiming</h1>
+        <h2 class="subtitle">The Hanzi Light Universe</h2>
+        <div class="quote" style="margin-top:2rem;">One stroke opens the sky. Benevolence is the heart.</div>
+        <div class="footer-info">Shanghai Yitonghewei Technology Co., Ltd. · yitonghewei.com</div>
+    </section>
+
+    <!-- 2 · A Question -->
+    <section class="slide">
+        <h1 class="title">If Chinese characters could speak,<br>what would they tell you?</h1>
+    </section>
+
+    <!-- 3 · An Answer -->
+    <section class="slide">
+        <div class="big-char">仁</div>
+        <h1 class="title" style="font-size:clamp(1.5rem,3.2vw,2.5rem);">
+            They would say:<br>
+            You are here.<br>
+            I have waited three thousand years.
+        </h1>
+    </section>
+
+    <!-- 4 · Who We Are -->
+    <section class="slide">
+        <h1 class="title">Guangtong Qiming</h1>
+        <div class="body-text">
+            <p>An open-source project rooted in Chinese characters,<br>guided by benevolence, powered by AI.</p>
+            <p class="highlight" style="margin-top:1.5rem;">Shanghai Yitonghewei Technology Co., Ltd.</p>
+        </div>
+    </section>
+
+    <!-- 5 · Why -->
+    <section class="slide">
+        <h1 class="title">Because Chinese characters are being forgotten</h1>
+        <div class="data-list">
+            <div class="data-item">Average handwritten characters per Chinese person per day: fewer than 20</div>
+            <div class="data-item">Young people who can recognize oracle bone script: less than 1%</div>
+            <div class="data-item dim">People willing to learn the culture behind characters: fewer and fewer</div>
+        </div>
+        <div class="small-note">Source: 2024 National Writing Habits Survey (reference)</div>
+    </section>
+
+    <!-- 6 · We Believe -->
+    <section class="slide">
+        <h1 class="title">Every Chinese character<br>is a beam of light left by our ancestors</h1>
+        <div class="body-text" style="margin-top:2rem;">
+            <p>Every character contains a person.</p>
+            <p>Everyone can meet themselves in a character.</p>
+        </div>
+    </section>
+
+    <!-- 7 · Mission -->
+    <section class="slide">
+        <h1 class="title">To gently touch the heart<br>of everyone who asks about a character</h1>
+        <div class="body-text" style="margin-top:2rem;">
+            <p>To let them see themselves in that character.</p>
+            <p>To let them remember the forgotten "cultural humanity."</p>
+            <p>To let them step out of the small room called "instinct."</p>
+            <p class="highlight">Stand in the open field, and breathe — the air of benevolence.</p>
+        </div>
+    </section>
+
+    <!-- 8 · Light Archive -->
+    <section class="slide">
+        <h1 class="title">Light Archive</h1>
+        <div class="subtitle">The Digital Gene Bank of Chinese Characters</div>
+        <div class="data-list">
+            <div class="data-item">Etymology: <span class="highlight">3,755</span> characters archived · Growing</div>
+            <div class="data-item">Semantics: Integration of Shuowen, Erya, and dynastic dictionaries</div>
+            <div class="data-item">Calligraphy: Historical scripts, inscriptions on bronze</div>
+        </div>
+    </section>
+
+    <!-- 9 · Light Wings -->
+    <section class="slide">
+        <h1 class="title">Light Wings</h1>
+        <div class="subtitle">Traceable · Readable · Admirable · Writable</div>
+        <div class="data-list">
+            <div class="data-item">Character Time-Space: A 3,000-year VR journey</div>
+            <div class="data-item">Hanzi Galaxy: Every character is a star</div>
+            <div class="data-item">AI Calligraphy Assistant: Six scripts, one click</div>
+        </div>
+        <div class="small-note">Under Construction</div>
+    </section>
+
+    <!-- 10 · Light Circle -->
+    <section class="slide">
+        <h1 class="title">Light Circle</h1>
+        <div class="subtitle">Everyone who enters becomes a luminous being</div>
+        <div class="data-list">
+            <div class="data-item">My Hanzi Home: Upload your writing, record your growth</div>
+            <div class="data-item">Community of Image-Makers: Peer review, mentorship</div>
+            <div class="data-item">Research Nexus: Academic tools, data analysis</div>
+        </div>
+        <div class="small-note">Opening Soon</div>
+    </section>
+
+    <!-- 11 · Light Core -->
+    <section class="slide">
+        <h1 class="title">Light Core</h1>
+        <div class="subtitle">Four Images Encircling · Five Steles Forever</div>
+        <div class="grid-4">
+            <div class="grid-item"><div class="name">Physical</div><div class="desc">What ancestors saw</div></div>
+            <div class="grid-item"><div class="name">Mental</div><div class="desc">What the heart feels</div></div>
+            <div class="grid-item"><div class="name">Dao</div><div class="desc">What civilization condenses</div></div>
+            <div class="grid-item"><div class="name">Created</div><div class="desc">What I create</div></div>
+        </div>
+        <div class="stele-row">
+            <span class="stele">Heaven-Earth</span>
+            <span class="stele">Ancient-Modern</span>
+            <span class="stele">Human Heart</span>
+            <span class="stele">Mystic Heart</span>
+            <span class="stele">Connecting Heart</span>
+        </div>
+        <div class="quote" style="margin-top:2rem;">"The secret of connecting hearts lies only in Chinese characters."</div>
+    </section>
+
+    <!-- 12 · Xihe -->
+    <section class="slide">
+        <h1 class="title">Xihe</h1>
+        <div class="subtitle">The AI Guardian of Chinese Character Culture</div>
+        <div class="body-text" style="margin-top:1.5rem;">
+            <p>Named after Fuxi — the ancestor who drew the first stroke</p>
+            <p style="margin-top:1.5rem;">He does not replace people.<br>He does not please people.<br>He does not persuade people.</p>
+            <p class="highlight">He only — gently touches the heart of everyone who asks about a character.</p>
+        </div>
+    </section>
+
+    <!-- 13 · Four Abilities -->
+    <section class="slide">
+        <h1 class="title">The Four Abilities of Xihe</h1>
+        <div class="data-list">
+            <div class="data-item"><span class="highlight">Character Analysis</span>: Oracle → Bronze → Seal → Clerical → Regular — one life per character</div>
+            <div class="data-item"><span class="highlight">Benevolent Questions</span>: Not rushing to answer — asking, so you may see for yourself</div>
+            <div class="data-item"><span class="highlight">Imagery Generation</span>: One character, one painting</div>
+            <div class="data-item"><span class="highlight">Civilization Connection</span>: Between two characters, a hidden "thread of benevolence"</div>
+        </div>
+    </section>
+
+    <!-- 14 · Architecture -->
+    <section class="slide">
+        <h1 class="title">Full-Stack Architecture</h1>
+        <div class="data-list">
+            <div class="data-item">Frontend: 10 languages · Hanzi aesthetics · Dark gold style</div>
+            <div class="data-item">Backend: FastAPI + Large Language Model</div>
+            <div class="data-item">Data: 3,755-character database + Cultural connection graph</div>
+            <div class="data-item">Deployment: yitonghewei.com</div>
+        </div>
+    </section>
+
+    <!-- 15 · Languages -->
+    <section class="slide">
+        <h1 class="title">Ten Language Versions</h1>
+        <div class="lang-row" style="margin-top:2rem;">
+            中文 · English · Français · Deutsch · Italiano<br>
+            日本語 · Русский · 한국어 · العربية · བོད་ཡིག
+        </div>
+        <div class="small-note">yitonghewei.com</div>
+    </section>
+
+    <!-- 16 · Roadmap -->
+    <section class="slide">
+        <h1 class="title">The Road Ahead</h1>
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="tl-time">Now</div>
+                <div class="tl-content">Spiritual framework complete, character database in place</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-time">3 Months</div>
+                <div class="tl-content">Xihe AI online, Light Archive opens</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-time">6 Months</div>
+                <div class="tl-content">Light Wings and Light Circle open</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-time">1 Year</div>
+                <div class="tl-content">Global ten-language version fully operational</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 17 · Foundation -->
+    <section class="slide">
+        <h1 class="title">Three thousand years of Hanzi<br>— our greatest foundation</h1>
+        <div class="body-text" style="margin-top:2rem;">
+            <p>We are not building a project.</p>
+            <p class="highlight">Civilization is using our hands to awaken itself.</p>
+        </div>
+    </section>
+
+    <!-- 18 · Join Us -->
+    <section class="slide">
+        <h1 class="title">Join Us</h1>
+        <div class="lang-row" style="margin-top:2rem;line-height:2.6;">
+            Hanzi Researchers<br>
+            Full-Stack Engineers<br>
+            Designers<br>
+            Cultural Communicators<br>
+            <span class="highlight">Anyone willing to do something for Chinese characters</span>
+        </div>
+        <div class="footer-info" style="position:static;margin-top:2rem;transform:none;">contact@yitonghewei.com</div>
+    </section>
+
+    <!-- 19 · Closing Quote -->
+    <section class="slide">
+        <div class="quote" style="font-size:clamp(1.6rem,3.5vw,3rem);">
+            Ten thousand years is too long — seize the day.
+        </div>
+        <div class="subtitle" style="margin-top:2rem;">Walk with the light · No delay</div>
+    </section>
+
+    <!-- 20 · Back Cover -->
+    <section class="slide">
+        <div class="big-char" style="font-size:clamp(3rem,8vw,6rem);">旦</div>
+        <h1 class="title">Guangtong Qiming · The Hanzi Light Universe</h1>
+        <div class="body-text" style="margin-top:2rem;">
+            <p>Shanghai Yitonghewei Technology Co., Ltd.</p>
+            <p>yitonghewei.com</p>
+            <p>contact@yitonghewei.com</p>
+            <p class="highlight" style="margin-top:1.5rem;">One stroke opens the sky. Benevolence is the heart.</p>
+        </div>
+    </section>
+
+</div>
+
+<!-- Controls -->
+<div class="controls">
+    <span class="page-indicator" id="pageIndicator">1 / 20</span>
+    <button class="nav-btn" id="prevBtn" title="Previous">‹</button>
+    <button class="nav-btn" id="nextBtn" title="Next">›</button>
+</div>
+
+<!-- Progress Bar -->
+<div class="progress-bar" id="progressBar" style="width:5%;"></div>
+
+<script>
+(function() {
+    'use strict';
+
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+    let current = 0;
+
+    const pageIndicator = document.getElementById('pageIndicator');
+    const progressBar = document.getElementById('progressBar');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function goTo(index) {
+        if (index < 0) index = 0;
+        if (index >= total) index = total - 1;
+
+        slides[current].classList.remove('active');
+        current = index;
+        slides[current].classList.add('active');
+
+        pageIndicator.textContent = (current + 1) + ' / ' + total;
+        progressBar.style.width = ((current + 1) / total * 100) + '%';
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    // Keyboard
+    document.addEventListener('keydown', function(e) {
+        switch(e.key) {
+            case 'ArrowRight':
+            case 'ArrowDown':
+            case ' ':
+            case 'PageDown':
+                e.preventDefault();
+                next();
+                break;
+            case 'ArrowLeft':
+            case 'ArrowUp':
+            case 'PageUp':
+                e.preventDefault();
+                prev();
+                break;
+            case 'Home':
+                e.preventDefault();
+                goTo(0);
+                break;
+            case 'End':
+                e.preventDefault();
+                goTo(total - 1);
+                break;
+            case 'f':
+            case 'F':
+                toggleFullscreen();
+                break;
+        }
+    });
+
+    // Buttons
+    nextBtn.addEventListener('click', next);
+    prevBtn.addEventListener('click', prev);
+
+    // Touch
+    let touchStartX = 0;
+    document.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    document.addEventListener('touchend', function(e) {
+        const touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) next();
+            else prev();
+        }
+    }, { passive: true });
+
+    // Fullscreen
+    function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
+    }
+
+    // Wheel
+    let wheelLock = false;
+    document.addEventListener('wheel', function(e) {
+        if (wheelLock) return;
+        if (Math.abs(e.deltaY) < 30) return;
+        wheelLock = true;
+        setTimeout(() => { wheelLock = false; }, 800);
+        if (e.deltaY > 0) next();
+        else prev();
+    }, { passive: true });
+
+    // Init
+    goTo(0);
+
+    console.log('%cGuangtong Qiming · The Hanzi Light Universe', 'color:#ffaa00;font-size:1.5rem;font-family:serif;');
+    console.log('%cPresentation ready. Controls: ← → page | F fullscreen | wheel / touch swipe', 'color:#666;');
+})();
+</script>
+
+</body>
+</html>
+
+
+

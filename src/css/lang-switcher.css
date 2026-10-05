@@ -1,0 +1,64 @@
+.lang-switcher {
+    position: fixed;
+    top: 1.5rem;
+    right: 2rem;
+    z-index: 200;
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    max-width: 400px;
+    justify-content: flex-end;
+}
+
+.lang-switcher a {
+    color: #888;
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
+    border: 1px solid rgba(255,170,0,0.2);
+    border-radius: 4px;
+    transition: all 0.3s;
+    font-family: sans-serif;
+}
+
+.lang-switcher a:hover,
+.lang-switcher a.active {
+    color: #ffaa00;
+    border-color: #ffaa00;
+    background: rgba(255,170,0,0.1);
+}
+
+
+body {
+    font-family: "Noto Naskh Arabic", "Traditional Arabic", serif;
+    direction: rtl;
+    text-align: right;
+}
+
+/* 边框方向反转 */
+.sub-title {
+    border-right: 3px solid #ffaa00;
+    border-left: 3px solid #ffaa00;
+}
+
+.card .sub {
+    border-right: 2px solid #ffaa00;
+    border-left: none;
+    padding-right: 1rem;
+    padding-left: 0;
+}
+
+.stele {
+    border-right: 2px solid #ffaa00;
+    border-left: none;
+    padding-right: 1rem;
+    padding-left: 0;
+}
+
+/* 语言切换器反向 */
+.lang-switcher {
+    left: 2rem;   /* 原来是 right */
+    right: auto;
+    direction: ltr;
+}
+

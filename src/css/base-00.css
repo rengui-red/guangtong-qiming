@@ -1,0 +1,228 @@
+/* ============================================
+   光通启明 · 暗色主题（用于子页面）
+   ============================================ */
+
+.dark-page {
+    background: #000;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 暗色顶部导航 */
+.site-header.dark {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    border-bottom: 1px solid rgba(255,170,0,0.15);
+}
+
+.site-header.dark .logo-mark {
+    background: #ffaa00;
+    color: #000;
+}
+
+.site-header.dark .logo-text {
+    color: #ffaa00;
+}
+
+.site-nav.dark a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    transition: all 0.3s;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 0.3rem;
+}
+
+.site-nav.dark a:hover,
+.site-nav.dark a.active {
+    color: #ffaa00;
+    border-bottom-color: #ffaa00;
+}
+
+/* 页面主区 */
+.page-main {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    width: 100%;
+}
+
+/* 页面首屏 */
+.page-hero {
+    text-align: center;
+    padding: 4rem 1rem 3rem;
+    border-bottom: 1px solid rgba(255,170,0,0.15);
+    margin-bottom: 3rem;
+}
+
+.page-title {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 400;
+    color: #ffaa00;
+    text-shadow: 0 0 20px rgba(255,170,0,0.5);
+    letter-spacing: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.page-subtitle {
+    font-size: 1.5rem;
+    color: #f0e6d0;
+    font-weight: 300;
+    letter-spacing: 0.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-desc {
+    font-size: 1rem;
+    color: #999;
+    font-style: italic;
+}
+
+/* 三栏卡片 */
+.page-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.page-card {
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,170,0,0.2);
+    border-radius: 24px;
+    padding: 2rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.page-card:hover {
+    border-color: #ffaa00;
+    box-shadow: 0 0 30px rgba(255,170,0,0.25);
+    transform: translateY(-5px);
+}
+
+.page-card h2 {
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: #ffaa00;
+    margin-bottom: 0.5rem;
+}
+
+.card-sub {
+    font-size: 0.95rem;
+    color: #ccc;
+    border-left: 2px solid #ffaa00;
+    padding-left: 0.8rem;
+    margin-bottom: 1.2rem;
+}
+
+.page-card p {
+    color: #ddd;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* 暗色按钮 */
+.btn-dark {
+    display: inline-block;
+    padding: 0.6rem 1.8rem;
+    border: 1px solid #ffaa00;
+    background: transparent;
+    color: #ffaa00;
+    font-size: 0.95rem;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    transition: 0.3s;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.btn-dark:hover:not(.disabled) {
+    background: #ffaa00;
+    color: #000;
+    box-shadow: 0 0 15px rgba(255,170,0,0.5);
+}
+
+.btn-dark.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    border-color: #666;
+    color: #666;
+}
+
+/* 数据统计 */
+.page-stats {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.live-stats.dark {
+    display: inline-block;
+    background: rgba(255,170,0,0.08);
+    border: 1px solid #ffaa00;
+    border-radius: 60px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    color: #f0e6d0;
+}
+
+.live-stats.dark span {
+    color: #ffaa00;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+/* 暗色页脚 */
+.site-footer.dark {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #666;
+    border-top: 1px solid rgba(255,170,0,0.1);
+    font-size: 0.85rem;
+}
+
+.site-footer.dark a {
+    color: #888;
+    text-decoration: none;
+}
+
+.site-footer.dark a:hover {
+    color: #ffaa00;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .site-header.dark {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    .site-nav.dark {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        justify-content: center;
+    }
+    .site-nav.dark a {
+        font-size: 0.85rem;
+    }
+    .page-hero {
+        padding: 2rem 1rem;
+    }
+    .page-title {
+        font-size: 2rem;
+        letter-spacing: 0.2rem;
+    }
+}
+
+

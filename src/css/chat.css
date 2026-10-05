@@ -1,0 +1,195 @@
+/* ============================================
+   光通启明 · 对话界面样式
+   ============================================ */
+
+.chat-page {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.chat-container {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 2rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    flex: 1;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* 羲和形象区 */
+.xihe-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 2rem;
+}
+
+.avatar-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200, 169, 106, 0.3), transparent 70%);
+    border: 1px solid var(--color-gold);
+    margin-bottom: 1rem;
+}
+
+.avatar-char {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    color: var(--color-ink);
+}
+
+.avatar-name {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+}
+
+.avatar-status {
+    font-size: 0.85rem;
+    color: #999;
+}
+
+/* 对话区 */
+.chat-main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.message {
+    max-width: 80%;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.message.xihe {
+    align-self: flex-start;
+}
+
+.message.user {
+    align-self: flex-end;
+}
+
+.message-content {
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius);
+    line-height: 1.8;
+}
+
+.message.xihe .message-content {
+    background: var(--color-light);
+    border-left: 3px solid var(--color-gold);
+}
+
+.message.user .message-content {
+    background: var(--color-ink);
+    color: var(--color-paper);
+}
+
+.message-content p {
+    margin-bottom: 0.5rem;
+}
+
+.message-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* 输入区 */
+.chat-input-area {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--color-mist);
+}
+
+#user-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-mist);
+    border-radius: var(--radius);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    background: var(--color-light);
+    transition: border-color 0.3s ease;
+}
+
+#user-input:focus {
+    outline: none;
+    border-color: var(--color-gold);
+}
+
+.btn-send {
+    padding: 0.75rem 1.75rem;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+}
+
+.btn-send:hover {
+    background: var(--color-gold);
+    color: var(--color-ink);
+}
+
+.chat-hint {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #999;
+    padding-bottom: 0.5rem;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .chat-container {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+    
+    .xihe-avatar {
+        flex-direction: row;
+        gap: 1rem;
+        padding-top: 0;
+        justify-content: flex-start;
+    }
+    
+    .avatar-circle {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 0;
+    }
+    
+    .avatar-char {
+        font-size: 1.5rem;
+    }
+    
+    .message {
+        max-width: 90%;
+    }
+}
+
+
+
+

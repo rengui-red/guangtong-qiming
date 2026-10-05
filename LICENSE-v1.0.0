@@ -1,0 +1,39 @@
+# License
+
+This project uses a dual license:
+
+## Code
+
+All source code in this repository (including but not limited to
+files in `src/`, `backend/`, `scripts/`, `config/`) is licensed
+under the **MIT License**.
+
+See [LICENSE-MIT](./LICENSE-MIT) for the full text.
+
+## Documentation and Data
+
+All documentation, data, and creative content (including but not
+limited to files in `docs/`, `ppt/`, `assets/`) are licensed under
+the **Creative Commons Attribution 4.0 International License
+(CC-BY 4.0)**.
+
+See [LICENSE-CC-BY](./LICENSE-CC-BY) for the full text.
+
+## Attribution
+
+When using documentation or data from this project, please attribute:
+
+> 光通启明 · 汉字光宇世界 (Guangtong Qiming · The Hanzi Light Universe)
+> https://github.com/[your-username]/guangtong-qiming
+> Shanghai Yitonghewei Technology Co., Ltd. · yitonghewei.com
+
+---
+
+*一画开天，仁以为心。*
+*One stroke opens the sky. Benevolence is the heart.*
+
+
+
+
+
+

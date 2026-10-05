@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光通启明 · 演示稿总入口</title>
+<meta name="author" content="上海易通和维科技有限责任公司">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+    background: #000;
+    color: #fff;
+    font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+    line-height: 1.6;
+}
+
+body::before {
+    content: "光 明 旦 启 日 月 星 辉 曜 曦 煦 昭 映 昧 昃 昙 昪 昶 晟 晞 晢 晧 晨 普 景 晴 晶 智 暖 暗 曌";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    color: rgba(255, 220, 150, 0.02);
+    font-size: 8vw;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: pre-wrap;
+    word-break: break-all;
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(-5deg) scale(1.5);
+    letter-spacing: 2vw;
+}
+
+.container {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 1rem 3rem;
+    border-bottom: 1px solid rgba(255,170,0,0.2);
+    margin-bottom: 4rem;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 6vw, 4rem);
+    color: #ffaa00;
+    letter-spacing: 0.3rem;
+    text-shadow: 0 0 30px rgba(255,170,0,0.4);
+    margin-bottom: 1rem;
+}
+
+.hero .subtitle {
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    color: #f0e6d0;
+    letter-spacing: 0.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero .quote {
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    color: #ffaa00;
+    font-style: italic;
+    letter-spacing: 0.1rem;
+}
+
+.section {
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+    color: #ffaa00;
+    letter-spacing: 0.3rem;
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+    border-left: 3px solid #ffaa00;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(255,170,0,0.25);
+    border-radius: 12px;
+    padding: 1.8rem 1.5rem;
+    background: rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    border-color: #ffaa00;
+    box-shadow: 0 0 30px rgba(255,170,0,0.25);
+    transform: translateY(-4px);
+}
+
+.card::after {
+    content: "→";
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    color: #ffaa00;
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.card:hover::after {
+    opacity: 1;
+}
+
+.card .card-tag {
+    font-size: 0.8rem;
+    color: #ffaa00;
+    letter-spacing: 0.2rem;
+    margin-bottom: 0.8rem;
+    font-family: sans-serif;
+}
+
+.card .card-title {
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05rem;
+}
+
+.card .card-desc {
+    font-size: 0.85rem;
+    color: #999;
+    line-height: 1.6;
+}
+
+.card .card-meta {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: #666;
+    font-family: sans-serif;
+}
+
+.footer {
+    text-align: center;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255,170,0,0.1);
+    color: #666;
+    font-size: 0.85rem;
+    line-height: 2;
+}
+
+.footer a {
+    color: #888;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: #ffaa00;
+}
+
+@media (max-width: 768px) {
+    .container { padding: 2rem 1rem 3rem; }
+    .hero { padding: 2rem 0.5rem; }
+    .grid { grid-template-columns: 1fr; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Hero -->
+    <div class="hero">
+        <h1>光通启明 · 演示稿总入口</h1>
+        <div class="subtitle">汉字光宇世界 · 全套 PPT 集合</div>
+        <div class="quote">一画开天，仁以为心</div>
+    </div>
+
+    <!-- 第一部分 · 演示稿 -->
+    <div class="section">
+        <div class="section-title">一、核心演示稿</div>
+        <div class="grid">
+            <a class="card" href="index.html">
+                <div class="card-tag">PRESENTATION · 中文</div>
+                <div class="card-title">光通启明 · 演示稿</div>
+                <div class="card-desc">20页逐页讲演 · 中文 · 适合正式场合演示</div>
+                <div class="card-meta">index.html · 20 pages</div>
+            </a>
+            <a class="card" href="index.en.html">
+                <div class="card-tag">PRESENTATION · English</div>
+                <div class="card-title">Guangtong Qiming · Presentation</div>
+                <div class="card-desc">20-page walkthrough · English · For international audiences</div>
+                <div class="card-meta">index.en.html · 20 pages</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- 第二部分 · 总目录（十大语言） -->
+    <div class="section">
+        <div class="section-title">二、总目录 · 十大语言</div>
+        <div class="grid">
+            <a class="card" href="catalog.html">
+                <div class="card-tag">CATALOG · 中文</div>
+                <div class="card-title">总目录 · 中文</div>
+                <div class="card-desc">可跳转 · 章节导航 · 六大板块</div>
+                <div class="card-meta">catalog.html · 20 pages</div>
+            </a>
+            <a class="card" href="catalog.en.html">
+                <div class="card-tag">CATALOG · English</div>
+                <div class="card-title">Master Catalog · English</div>
+                <div class="card-desc">Navigable · Six chapters</div>
+                <div class="card-meta">catalog.en.html · 20 pages</div>
+            </a>
+            <a class="card" href="catalog.ja.html">
+                <div class="card-tag">CATALOG · 日本語</div>
+                <div class="card-title">総目次 · 日本語</div>
+                <div class="card-desc">章をクリックしてジャンプ · 六つの章</div>
+                <div class="card-meta">catalog.ja.html · 20 pages</div>
+            </a>
+            <a class="card" href="catalog.ko.html">
+                <div class="card-tag">CATALOG · 한국어</div>
+                <div class="card-title">총목차 · 한국어</div>
+                <div class="card-desc">장 클릭 이동 · 여섯 개 장</div>
+                <div class="card-meta">catalog.ko.html · 20 pages</div>
+            </a>
+            <a class="card" href="catalog.fr.html">
+                <div class="card-tag">CATALOG · Français</div>
+                <div class="card-title">Catalogue Général · Français</div>
+                <div class="card-desc">Navigable · Six chapitres</div>
+                <div class="card-meta">catalog.fr.html · 20 pages</div>
+            </a>
+            <a class="card" href="catalog.de.html">
+                <div class="card-tag">CATALOG · Deutsch</div>
+                <div class="card-title">Hauptkatalog · Deutsch</div>
+                <div class="card-desc">Navigierbar · Sechs Kapitel</div>
+                <div class="card-meta">catalog.de.html · 20 pages</div>
+            </a>
+            <a class="card" href="catalog.it.html">
+                <div class="card-tag">CATALOG · Italiano</div>
+                <div class="card-title">Catalogo Generale · Italiano</div>
+                <div class="card-desc">Navigabile · Sei capitoli</div>
+                <div class="card-meta">catalog.it.html · 20 pages</div>
+            </a>
+            <a class="card" href="catalog.ru.html">
+                <div class="card-tag">CATALOG · Русский</div>
+                <div class="card-title">Общий каталог · Русский</div>
+                <div class="card-desc">Навигация · Шесть разделов</div>
+                <div class="card-meta">catalog.ru.html · 20 pages</div>
+            </a>
+            <a class="card" href="catalog.ar.html">
+                <div class="card-tag">CATALOG · العربية</div>
+                <div class="card-title">الفهرس العام · العربية</div>
+                <div class="card-desc">RTL · ستة أجزاء</div>
+                <div class="card-meta">catalog.ar.html · 20 pages · RTL</div>
+            </a>
+            <a class="card" href="catalog.bo.html">
+                <div class="card-tag">CATALOG · བོད་ཡིག</div>
+                <div class="card-title">藏文总目录</div>
+                <div class="card-desc">待专家审校 · 结构完整</div>
+                <div class="card-meta">catalog.bo.html · 20 pages</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- 第三部分 · 五套专题 -->
+    <div class="section">
+        <div class="section-title">三、专题 PPT · 五套</div>
+        <div class="grid">
+            <a class="card" href="topic-spirit.html">
+                <div class="card-tag">TOPIC · 精神篇</div>
+                <div class="card-title">精神篇</div>
+                <div class="card-desc">文明内核 · 仁之始觉 · 大自利 · 四象五碑</div>
+                <div class="card-meta">topic-spirit.html · 20 pages</div>
+            </a>
+            <a class="card" href="topic-tech.html">
+                <div class="card-tag">TOPIC · 技术篇</div>
+                <div class="card-title">技术篇</div>
+                <div class="card-desc">全栈体系 · 架构 · API · 部署 · 开源</div>
+                <div class="card-meta">topic-tech.html · 20 pages</div>
+            </a>
+            <a class="card" href="topic-business.html">
+                <div class="card-tag">TOPIC · 商业篇</div>
+                <div class="card-title">商业篇</div>
+                <div class="card-desc">市场 · 模式 · 运营 · 合作 · 融资</div>
+                <div class="card-meta">topic-business.html · 20 pages</div>
+            </a>
+            <a class="card" href="topic-nurture.html">
+                <div class="card-tag">TOPIC · 化育篇</div>
+                <div class="card-title">化育篇</div>
+                <div class="card-desc">不教而化 · 不育而育 · 陪孩子看字</div>
+                <div class="card-meta">topic-nurture.html · 20 pages</div>
+            </a>
+            <a class="card" href="topic-international.en.html">
+                <div class="card-tag">TOPIC · International</div>
+                <div class="card-title">International</div>
+                <div class="card-desc">English · For the world · Ten languages</div>
+                <div class="card-meta">topic-international.en.html · 20 pages</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>上海易通和维科技有限责任公司</p>
+        <p>yitonghewei.com</p>
+        <p>
+            <a href="mailto:contact@yitonghewei.com">contact@yitonghewei.com</a>
+            ·
+            <a href="mailto:support@yitonghewei.com">support@yitonghewei.com</a>
+        </p>
+        <p style="margin-top:1.5rem; color:#ffaa00; font-style:italic;">
+            一万年太久，只争朝夕 · 与光同行，无有滞时
+        </p>
+        <p style="margin-top:1rem; font-size:0.75rem; color:#444;">
+            © 2026 上海易通和维科技有限责任公司 · 光通启明
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>
+
+
+

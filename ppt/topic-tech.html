@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光通启明 · 技术篇</title>
+<meta name="author" content="上海易通和维科技有限责任公司">
+<link rel="stylesheet" href="topic-shared.css">
+</head>
+<body>
+
+<div class="stage">
+
+    <!-- ============ 1 · 封面 ============ -->
+    <section class="slide active">
+        <div class="topic-tag">专 题 · 技 术 篇</div>
+        <h1 class="title">光通启明</h1>
+        <h2 class="subtitle">全栈技术体系</h2>
+        <div class="quote" style="margin-top:2rem;">开源 · 开放 · 可复用</div>
+        <div class="footer-info">上海易通和维科技有限责任公司 · yitonghewei.com</div>
+    </section>
+
+    <!-- ============ 2 · 技术全景 ============ -->
+    <section class="slide">
+        <h1 class="title">技术全景</h1>
+        <div class="data-list">
+            <div class="data-item"><span class="highlight">前端</span>：十种语言 · 汉字美学 · 暗金风格</div>
+            <div class="data-item"><span class="highlight">后端</span>：FastAPI + 大模型</div>
+            <div class="data-item"><span class="highlight">数据</span>：3,755 字源库 + 文化关联图谱</div>
+            <div class="data-item"><span class="highlight">部署</span>：yitonghewei.com</div>
+            <div class="data-item"><span class="highlight">开源</span>：MIT + CC-BY 双协议</div>
+        </div>
+    </section>
+
+    <!-- ============ 3 · 系统架构 ============ -->
+    <section class="slide">
+        <h1 class="title">系统架构</h1>
+        <div class="body-text" style="margin-top:2rem;font-family:monospace;line-height:2.2;">
+            <p>用户浏览器</p>
+            <p>↓</p>
+            <p>前端（HTML / CSS / JS）</p>
+            <p>↓</p>
+            <p>后端 API（FastAPI）</p>
+            <p>↓</p>
+            <p>羲和核心（大模型 + 字源库 + 文化图谱）</p>
+        </div>
+    </section>
+
+    <!-- ============ 4 · 前端架构 ============ -->
+    <section class="slide">
+        <h1 class="title">前端架构</h1>
+        <div class="data-list">
+            <div class="data-item">十种语言版本：zh / en / fr / de / it / ja / ru / ko / ar / bo</div>
+            <div class="data-item">汉字美学：暗金风格 · 宋体 · 光点动画</div>
+            <div class="data-item">自动语言识别：URL &gt; localStorage &gt; 浏览器语言 &gt; 默认</div>
+            <div class="data-item">响应式：桌面 / 平板 / 手机</div>
+        </div>
+    </section>
+
+    <!-- ============ 5 · 后端架构 ============ -->
+    <section class="slide">
+        <h1 class="title">后端架构</h1>
+        <div class="data-list">
+            <div class="data-item">框架：FastAPI（Python）</div>
+            <div class="data-item">接口：/api/xihe/chat · /character · /connect · /search</div>
+            <div class="data-item">大模型：DeepSeek / OpenAI / 通义（可切换）</div>
+            <div class="data-item">CORS：全域名可配</div>
+            <div class="data-item">日志：生产级 logger</div>
+        </div>
+    </section>
+
+    <!-- ============ 6 · 数据层 ============ -->
+    <section class="slide">
+        <h1 class="title">数据层</h1>
+        <div class="data-list">
+            <div class="data-item">字源库：3,755 字，标准 JSON 格式</div>
+            <div class="data-item">部首索引：70+ 部首</div>
+            <div class="data-item">拼音索引：410+ 拼音</div>
+            <div class="data-item">文化关联图谱：200 字，持续扩展</div>
+            <div class="data-item">羲和视角库：每字一句话</div>
+        </div>
+    </section>
+
+    <!-- ============ 7 · 羲和四大能力 ============ -->
+    <section class="slide">
+        <h1 class="title">羲和 · 四大能力</h1>
+        <div class="grid-3">
+            <div class="grid-card"><div class="name">解字</div><div class="desc">从甲骨到楷书，一字一生</div></div>
+            <div class="grid-card"><div class="name">仁者之问</div><div class="desc">启发式反问，让人自己看见</div></div>
+            <div class="grid-card"><div class="name">意象生成</div><div class="desc">一个字，一幅画</div></div>
+            <div class="grid-card"><div class="name">文明连接</div><div class="desc">两字之间，一条“仁之线”</div></div>
+            <div class="grid-card"><div class="name">记忆</div><div class="desc">短时 + 长时，有伦理规范</div></div>
+            <div class="grid-card"><div class="name">语态</div><div class="desc">温润如玉，沉默也是语言</div></div>
+        </div>
+    </section>
+
+    <!-- ============ 8 · API 接口 ============ -->
+    <section class="slide">
+        <h1 class="title">API 接口</h1>
+        <div class="data-list" style="font-family:monospace;font-size:clamp(0.85rem,1.3vw,1.05rem);">
+            <div class="data-item">POST /api/xihe/chat · 对话</div>
+            <div class="data-item">GET  /api/xihe/character/{char} · 解字</div>
+            <div class="data-item">GET  /api/xihe/search?keyword=xxx · 搜索</div>
+            <div class="data-item">GET  /api/xihe/connect?char1=X&amp;char2=Y · 文明连接</div>
+            <div class="data-item">GET  /api/xihe/stats · 统计</div>
+            <div class="data-item">GET  /health · 健康检查</div>
+        </div>
+    </section>
+
+    <!-- ============ 9 · 部署方案 ============ -->
+    <section class="slide">
+        <h1 class="title">部署方案</h1>
+        <div class="data-list">
+            <div class="data-item"><span class="highlight">方案A</span> GitHub Pages · 免费 · 纯静态 · 推荐起步</div>
+            <div class="data-item"><span class="highlight">方案B</span> 国内服务器 · 备案 · 可接后端 · 推荐长期</div>
+            <div class="data-item"><span class="highlight">方案C</span> Vercel / Netlify · 国际版 · 免费 CDN</div>
+        </div>
+        <div class="small-note">详见 config/deployment.md</div>
+    </section>
+
+    <!-- ============ 10 · 开源协议 ============ -->
+    <section class="slide">
+        <h1 class="title">开源协议</h1>
+        <div class="data-list">
+            <div class="data-item"><span class="highlight">代码</span>：MIT License · 谁都能用，谁都能改</div>
+            <div class="data-item"><span class="highlight">文档和数据</span>：CC-BY 4.0 · 可商用，需署名</div>
+            <div class="data-item">这是全世界开源项目的标准做法</div>
+        </div>
+    </section>
+
+    <!-- ============ 11 · 项目结构 ============ -->
+    <section class="slide">
+        <h1 class="title">项目结构</h1>
+        <div class="body-text" style="font-family:monospace;font-size:clamp(0.8rem,1.2vw,1rem);line-height:2;text-align:left;">
+            <p>guangtong-qiming/</p>
+            <p>├── docs/       文档</p>
+            <p>├── src/        前端</p>
+            <p>├── backend/    后端</p>
+            <p>├── config/     配置</p>
+            <p>├── scripts/    脚本</p>
+            <p>└── ppt/        演示稿</p>
+        </div>
+    </section>
+
+    <!-- ============ 12 · 技术路线图 ============ -->
+    <section class="slide">
+        <h1 class="title">技术路线图</h1>
+        <div class="timeline">
+            <div class="tl-item"><div class="tl-time">现在</div><div class="tl-content">前端十语版本 · 后端框架 · 数据骨架</div></div>
+            <div class="tl-item"><div class="tl-time">3个月</div><div class="tl-content">羲和 AI 上线 · 光库开放</div></div>
+            <div class="tl-item"><div class="tl-time">6个月</div><div class="tl-content">光翼（VR/星际）· 光圈（社群）</div></div>
+            <div class="tl-item"><div class="tl-time">1年</div><div class="tl-content">全球十语版本正式运营</div></div>
+        </div>
+    </section>
+
+    <!-- ============ 13 · 如何贡献 ============ -->
+    <section class="slide">
+        <h1 class="title">如何贡献</h1>
+        <div class="data-list">
+            <div class="data-item">Fork 仓库</div>
+            <div class="data-item">提 Issue 报告问题</div>
+            <div class="data-item">提 Pull Request 提交代码</div>
+            <div class="data-item">补充字源数据、文化图谱</div>
+            <div class="data-item">翻译更多语言</div>
+        </div>
+        <div class="small-note">contact@yitonghewei.com</div>
+    </section>
+
+    <!-- ============ 14 · 金句 ============ -->
+    <section class="slide">
+        <div class="quote" style="font-size:clamp(1.5rem,3vw,2.5rem);">
+            不是我们在造一个项目<br>
+            是文明，借我们的手，把自己唤醒
+        </div>
+    </section>
+
+    <!-- ============ 15 · 技术模块清单 ============ -->
+    <section class="slide">
+        <h1 class="title">技术模块清单</h1>
+        <div class="grid-3">
+            <div class="grid-card"><div class="name">字源库</div><div class="desc">3,755 字 · JSON 结构化</div></div>
+            <div class="grid-card"><div class="name">部首索引</div><div class="desc">70+ 部首 · 快速检索</div></div>
+            <div class="grid-card"><div class="name">拼音索引</div><div class="desc">410+ 拼音 · 快速定位</div></div>
+            <div class="grid-card"><div class="name">文化图谱</div><div class="desc">字与字的关联网络</div></div>
+            <div class="grid-card"><div class="name">羲和对话</div><div class="desc">大模型 + 系统提示词</div></div>
+            <div class="grid-card"><div class="name">记忆系统</div><div class="desc">短期 + 长期 · 伦理规范</div></div>
+        </div>
+    </section>
+
+    <!-- ============ 16 · 技术选型理由 ============ -->
+    <section class="slide">
+        <h1 class="title">技术选型理由</h1>
+        <div class="data-list">
+            <div class="data-item"><span class="highlight">FastAPI</span>：轻量、快速、异步、文档自动生成</div>
+            <div class="data-item"><span class="highlight">DeepSeek</span>：中文理解强、开源、成本可控</div>
+            <div class="data-item"><span class="highlight">JSON</span>：可读、可移植、易维护</div>
+            <div class="data-item"><span class="highlight">纯前端</span>：无框架依赖，部署简单</div>
+            <div class="data-item"><span class="highlight">MIT + CC-BY</span>：全球开源标准</div>
+        </div>
+    </section>
+
+    <!-- ============ 17 · 安全与合规 ============ -->
+    <section class="slide">
+        <h1 class="title">安全与合规</h1>
+        <div class="data-list">
+            <div class="data-item">用户数据：不存储隐私信息</div>
+            <div class="data-item">记忆系统：用户可查看、修改、删除</div>
+            <div class="data-item">API：支持 CORS 白名单</div>
+            <div class="data-item">日志：脱敏处理，不记录敏感内容</div>
+            <div class="data-item">开源：代码可审计，无隐藏逻辑</div>
+        </div>
+    </section>
+
+    <!-- ============ 18 · 可扩展性 ============ -->
+    <section class="slide">
+        <h1 class="title">可扩展性</h1>
+        <div class="data-list">
+            <div class="data-item">新增语言：只需新增 index.xx.html，无需改代码</div>
+            <div class="data-item">新增字源：只需往 JSON 里加一条记录</div>
+            <div class="data-item">新增能力：只需新增一个能力文档 + API</div>
+            <div class="data-item">替换大模型：只需改 config.py 一行</div>
+            <div class="data-item">替换部署：GitHub Pages / 服务器 / Vercel 皆可</div>
+        </div>
+    </section>
+
+    <!-- ============ 19 · 结语 ============ -->
+    <section class="slide">
+        <h1 class="title">技术的意义</h1>
+        <div class="body-text" style="margin-top:2rem;">
+            <p>技术不是目的。</p>
+            <p>技术是让文明被看见的容器。</p>
+            <p class="highlight" style="margin-top:1.5rem;">我们做的不是产品，是文明的载体。</p>
+        </div>
+    </section>
+
+    <!-- ============ 20 · 封底 ============ -->
+    <section class="slide">
+        <div class="big-char" style="font-size:clamp(3rem,8vw,6rem);">旦</div>
+        <h1 class="title">光通启明 · 技术篇</h1>
+        <div class="body-text" style="margin-top:1.5rem;">
+            <p>上海易通和维科技有限责任公司</p>
+            <p>yitonghewei.com · contact@yitonghewei.com</p>
+            <p class="highlight" style="margin-top:1rem;">一画开天，仁以为心</p>
+        </div>
+    </section>
+
+</div>
+
+<!-- 操作 -->
+<div class="controls">
+    <span class="page-indicator" id="pageIndicator">1 / 20</span>
+    <button class="nav-btn" id="prevBtn" title="上一页">‹</button>
+    <button class="nav-btn" id="nextBtn" title="下一页">›</button>
+</div>
+
+<div class="progress-bar" id="progressBar" style="width:5%;"></div>
+
+<script>
+(function(){
+    'use strict';
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+    let current = 0;
+    const pi = document.getElementById('pageIndicator');
+    const pb = document.getElementById('progressBar');
+
+    function goTo(i) {
+        if (i < 0) i = 0;
+        if (i >= total) i = total - 1;
+        slides[current].classList.remove('active');
+        current = i;
+        slides[current].classList.add('active');
+        pi.textContent = (current + 1) + ' / ' + total;
+        pb.style.width = ((current + 1) / total * 100) + '%';
+    }
+    function next(){ goTo(current + 1); }
+    function prev(){ goTo(current - 1); }
+
+    document.addEventListener('keydown', function(e) {
+        if (['ArrowRight','ArrowDown',' ','PageDown'].indexOf(e.key) !== -1) {
+            e.preventDefault(); next();
+        } else if (['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key) !== -1) {
+            e.preventDefault(); prev();
+        } else if (e.key === 'Home') {
+            e.preventDefault(); goTo(0);
+        } else if (e.key === 'End') {
+            e.preventDefault(); goTo(total - 1);
+        } else if (e.key === 'f' || e.key === 'F') {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+    });
+
+    document.getElementById('nextBtn').addEventListener('click', next);
+    document.getElementById('prevBtn').addEventListener('click', prev);
+
+    let touchStartX = 0;
+    document.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    document.addEventListener('touchend', function(e) {
+        const d = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(d) > 50) {
+            if (d > 0) next(); else prev();
+        }
+    }, { passive: true });
+
+    let wheelLock = false;
+    document.addEventListener('wheel', function(e) {
+        if (wheelLock) return;
+        if (Math.abs(e.deltaY) < 30) return;
+        wheelLock = true;
+        setTimeout(function(){ wheelLock = false; }, 800);
+        if (e.deltaY > 0) next(); else prev();
+    }, { passive: true });
+
+    goTo(0);
+})();
+</script>
+
+</body>
+</html>
+
+
+
+

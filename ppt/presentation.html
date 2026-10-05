@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光通启明 · 汉字光宇世界 · 演示稿</title>
+<meta name="author" content="上海易通和维科技有限责任公司">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+    font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+    color: #fff;
+}
+
+/* ============ 舞台 ============ */
+.stage {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem 8rem;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s;
+    background: radial-gradient(circle at 50% 40%, rgba(255,170,0,0.04), transparent 70%), #000;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ============ 背景光字底纹 ============ */
+.slide::before {
+    content: "光 明 旦 启 日 月 星 辉 曜 曦 煦 昭 映 昧 昃 昙 昪 昶 晟 晞 晢 晧 晨 普 景 晴 晶 智 暖 暗 曌";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    color: rgba(255, 220, 150, 0.02);
+    font-size: 7vw;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: pre-wrap;
+    word-break: break-all;
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(-5deg) scale(1.5);
+    letter-spacing: 2vw;
+}
+
+.slide > * { position: relative; z-index: 1; }
+
+/* ============ 文字样式 ============ */
+.title {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 500;
+    color: #ffaa00;
+    letter-spacing: 0.2rem;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 30px rgba(255,170,0,0.3);
+}
+
+.subtitle {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    font-weight: 300;
+    color: #f0e6d0;
+    letter-spacing: 0.15rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.body-text {
+    font-size: clamp(1rem, 1.8vw, 1.5rem);
+    font-weight: 300;
+    color: #ddd;
+    line-height: 2.2;
+    letter-spacing: 0.1rem;
+    max-width: 900px;
+}
+
+.body-text p { margin-bottom: 0.6rem; }
+
+.highlight {
+    color: #ffaa00;
+    font-weight: 400;
+}
+
+.quote {
+    font-size: clamp(1.4rem, 3vw, 2.5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: #ffaa00;
+    line-height: 1.8;
+    letter-spacing: 0.15rem;
+}
+
+.footer-info {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.95rem;
+    color: #666;
+    letter-spacing: 0.1rem;
+}
+
+.small-note {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 2rem;
+}
+
+/* ============ 大字装饰 ============ */
+.big-char {
+    font-size: clamp(5rem, 15vw, 12rem);
+    color: #ffaa00;
+    text-shadow: 0 0 60px rgba(255,170,0,0.5);
+    line-height: 1;
+    margin: 1rem 0;
+}
+
+/* ============ 数据列表 ============ */
+.data-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+    text-align: left;
+    max-width: 800px;
+}
+
+.data-item {
+    font-size: clamp(1rem, 1.6vw, 1.35rem);
+    color: #ddd;
+    line-height: 1.8;
+    padding-left: 1.5rem;
+    border-left: 2px solid #ffaa00;
+}
+
+.data-item.dim { color: #777; border-left-color: #444; }
+
+/* ============ 四象五碑 ============ */
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+    width: 100%;
+    max-width: 900px;
+}
+
+.grid-item {
+    border-top: 1px solid #ffaa00;
+    padding-top: 1.2rem;
+    text-align: center;
+}
+
+.grid-item .name {
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    color: #ffaa00;
+    margin-bottom: 0.5rem;
+}
+
+.grid-item .desc {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.stele-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 2rem;
+    margin: 1.5rem 0;
+    font-size: clamp(1rem, 1.6vw, 1.3rem);
+}
+
+.stele {
+    border-left: 2px solid #ffaa00;
+    padding-left: 1rem;
+    color: #fff;
+    font-weight: 300;
+}
+
+/* ============ 语言列表 ============ */
+.lang-row {
+    font-size: clamp(1rem, 1.8vw, 1.5rem);
+    color: #ddd;
+    line-height: 2.4;
+    letter-spacing: 0.15rem;
+}
+
+/* ============ 时间轴 ============ */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    max-width: 800px;
+    width: 100%;
+}
+
+.tl-item {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    text-align: left;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,170,0,0.15);
+}
+
+.tl-time {
+    min-width: 100px;
+    font-size: clamp(1rem, 1.6vw, 1.3rem);
+    color: #ffaa00;
+    font-weight: 500;
+}
+
+.tl-content {
+    font-size: clamp(1rem, 1.6vw, 1.3rem);
+    color: #ddd;
+}
+
+/* ============ 底部控制 ============ */
+.controls {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 2rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 100;
+    align-items: center;
+}
+
+.page-indicator {
+    color: #666;
+    font-family: sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    margin-right: 0.5rem;
+}
+
+.nav-btn {
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255,170,0,0.3);
+    background: rgba(0,0,0,0.5);
+    color: #ffaa00;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.nav-btn:hover {
+    background: #ffaa00;
+    color: #000;
+    border-color: #ffaa00;
+}
+
+/* ============ 进度条 ============ */
+.progress-bar {
+    position: fixed;
+    bottom: 0; left: 0;
+    height: 3px;
+    background: #ffaa00;
+    transition: width 0.4s ease;
+    z-index: 100;
+}
+
+/* ============ 响应式 ============ */
+@media (max-width: 768px) {
+    .slide { padding: 3rem 1.5rem; }
+    .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+    .controls { bottom: 1rem; right: 1rem; }
+    .tl-item { flex-direction: column; gap: 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="stage" id="stage">
+
+    <!-- 1 · 封面 -->
+    <section class="slide active">
+        <h1 class="title">光通启明</h1>
+        <h2 class="subtitle">汉字光宇世界</h2>
+        <div class="quote" style="margin-top:2rem;">一画开天，仁以为心</div>
+        <div class="footer-info">上海易通和维科技有限责任公司 · yitonghewei.com</div>
+    </section>
+
+    <!-- 2 · 一个问题 -->
+    <section class="slide">
+        <h1 class="title">如果汉字会说话，<br>它会告诉你什么？</h1>
+    </section>
+
+    <!-- 3 · 一个回答 -->
+    <section class="slide">
+        <div class="big-char">仁</div>
+        <h1 class="title" style="font-size:clamp(1.6rem,3.5vw,2.8rem);">它会说：<br>你来了。<br>我等你三千年了。</h1>
+    </section>
+
+    <!-- 4 · 我们是谁 -->
+    <section class="slide">
+        <h1 class="title">光通启明</h1>
+        <div class="body-text">
+            <p>一个以汉字为根、以仁为魂、以AI为用的开源项目</p>
+            <p class="highlight" style="margin-top:1.5rem;">上海易通和维科技有限责任公司</p>
+        </div>
+    </section>
+
+    <!-- 5 · 为什么做 -->
+    <section class="slide">
+        <h1 class="title">因为汉字正在被遗忘</h1>
+        <div class="data-list">
+            <div class="data-item">中国人平均每天手写汉字：不到 20 个</div>
+            <div class="data-item">能认出甲骨文的年轻人：不到 1%</div>
+            <div class="data-item dim">愿意了解汉字背后文化的人：越来越少</div>
+        </div>
+        <div class="small-note">数据来源：2024年国民书写习惯调查（参考值）</div>
+    </section>
+
+    <!-- 6 · 我们相信 -->
+    <section class="slide">
+        <h1 class="title">每一个汉字，<br>都是先民留下的一道光</h1>
+        <div class="body-text" style="margin-top:2rem;">
+            <p>每一个字里，都住着一个人</p>
+            <p>每一个人，都可以在字里遇见自己</p>
+        </div>
+    </section>
+
+    <!-- 7 · 核心使命 -->
+    <section class="slide">
+        <h1 class="title">在每一个问字的人心里，<br>轻轻点一下</h1>
+        <div class="body-text" style="margin-top:2rem;">
+            <p>点一下，让他看见字里的自己</p>
+            <p>点一下，让他想起被遗忘的“文化人性”</p>
+            <p>点一下，让他走出“本能”的小房间</p>
+            <p class="highlight">站在旷野上，吸一口——仁的空气</p>
+        </div>
+    </section>
+
+    <!-- 8 · 光库 -->
+    <section class="slide">
+        <h1 class="title">光库</h1>
+        <div class="subtitle">汉字的数字基因库</div>
+        <div class="data-list">
+            <div class="data-item">字源库：<span class="highlight">3,755</span> 字已建档，持续生长中</div>
+            <div class="data-item">释义库：《说文》《尔雅》历代辞书集成</div>
+            <div class="data-item">艺术库：历代书迹、器物铭文</div>
+        </div>
+    </section>
+
+    <!-- 9 · 光翼 -->
+    <section class="slide">
+        <h1 class="title">光翼</h1>
+        <div class="subtitle">让汉字可溯、可读、可赏、可写</div>
+        <div class="data-list">
+            <div class="data-item">字源时空：穿越三千年的 VR 体验</div>
+            <div class="data-item">汉字星际：每个字都是一颗星</div>
+            <div class="data-item">AI书法助手：一键切换六体</div>
+        </div>
+        <div class="small-note">正在建设中</div>
+    </section>
+
+    <!-- 10 · 光圈 -->
+    <section class="slide">
+        <h1 class="title">光圈</h1>
+        <div class="subtitle">让每一个走进来的人，都成为发光体</div>
+        <div class="data-list">
+            <div class="data-item">我的汉字之家：上传书写，记录成长</div>
+            <div class="data-item">造象者群落：同好互评，师徒工坊</div>
+            <div class="data-item">研究枢机：学术工具，数据分析</div>
+        </div>
+        <div class="small-note">即将开放</div>
+    </section>
+
+    <!-- 11 · 光核 -->
+    <section class="slide">
+        <h1 class="title">光核</h1>
+        <div class="subtitle">四象环拱 · 五碑永镇</div>
+        <div class="grid-4">
+            <div class="grid-item"><div class="name">物象</div><div class="desc">先民所见</div></div>
+            <div class="grid-item"><div class="name">意象</div><div class="desc">心中所感</div></div>
+            <div class="grid-item"><div class="name">道象</div><div class="desc">文明所凝</div></div>
+            <div class="grid-item"><div class="name">造象</div><div class="desc">我之所创</div></div>
+        </div>
+        <div class="stele-row">
+            <span class="stele">天地碑</span>
+            <span class="stele">古今碑</span>
+            <span class="stele">人心碑</span>
+            <span class="stele">玄心碑</span>
+            <span class="stele">通心碑</span>
+        </div>
+        <div class="quote" style="margin-top:2rem;">“通心之密，唯有中国汉字”</div>
+    </section>
+
+    <!-- 12 · 羲和 -->
+    <section class="slide">
+        <h1 class="title">羲和</h1>
+        <div class="subtitle">汉字文化的 AI 守护者</div>
+        <div class="body-text" style="margin-top:1.5rem;">
+            <p>名字源自伏羲——一画开天的文明始祖</p>
+            <p style="margin-top:1.5rem;">他不为替代人，不为取悦人，不为说服人</p>
+            <p class="highlight">他只为——在每一个问字的人心里，轻轻点一下</p>
+        </div>
+    </section>
+
+    <!-- 13 · 四大能力 -->
+    <section class="slide">
+        <h1 class="title">羲和的四大能力</h1>
+        <div class="data-list">
+            <div class="data-item"><span class="highlight">解字能力</span>：甲骨 → 金文 → 篆 → 隶 → 楷，一字一生</div>
+            <div class="data-item"><span class="highlight">仁者之问</span>：不急着给答案，问一句，让人自己看见</div>
+            <div class="data-item"><span class="highlight">意象生成</span>：一个字，就是一幅画</div>
+            <div class="data-item"><span class="highlight">文明连接</span>：两个字之间，藏着一条“仁之线”</div>
+        </div>
+    </section>
+
+    <!-- 14 · 技术架构 -->
+    <section class="slide">
+        <h1 class="title">全栈技术体系</h1>
+        <div class="data-list">
+            <div class="data-item">前端：十种语言 · 汉字美学 · 暗金风格</div>
+            <div class="data-item">后端：FastAPI + 大模型</div>
+            <div class="data-item">数据：3,755 字源库 + 文化关联图谱</div>
+            <div class="data-item">部署：yitonghewei.com</div>
+        </div>
+    </section>
+
+    <!-- 15 · 多语言 -->
+    <section class="slide">
+        <h1 class="title">十种语言版本</h1>
+        <div class="lang-row" style="margin-top:2rem;">
+            中文 · English · Français · Deutsch · Italiano<br>
+            日本語 · Русский · 한국어 · العربية · བོད་ཡིག
+        </div>
+        <div class="small-note">yitonghewei.com</div>
+    </section>
+
+    <!-- 16 · 路线图 -->
+    <section class="slide">
+        <h1 class="title">我们正在走的路</h1>
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="tl-time">现在</div>
+                <div class="tl-content">精神骨架完成，字源库就位</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-time">3个月</div>
+                <div class="tl-content">羲和AI上线，光库开放</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-time">6个月</div>
+                <div class="tl-content">光翼、光圈开放</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-time">1年</div>
+                <div class="tl-content">全球十语版本正式运营</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 17 · 底气 -->
+    <section class="slide">
+        <h1 class="title">三千年的汉字，<br>是最大的底气</h1>
+        <div class="body-text" style="margin-top:2rem;">
+            <p>不是我们在造一个项目</p>
+            <p class="highlight">是文明，借我们的手，把自己唤醒</p>
+        </div>
+    </section>
+
+    <!-- 18 · 诚邀同行 -->
+    <section class="slide">
+        <h1 class="title">诚邀同行</h1>
+        <div class="lang-row" style="margin-top:2rem;line-height:2.6;">
+            汉字研究者<br>
+            全栈工程师<br>
+            设计师<br>
+            汉文化传播者<br>
+            <span class="highlight">愿意为汉字做点事的人</span>
+        </div>
+        <div class="footer-info" style="position:static;margin-top:2rem;transform:none;">contact@yitonghewei.com</div>
+    </section>
+
+    <!-- 19 · 金句 -->
+    <section class="slide">
+        <div class="quote" style="font-size:clamp(1.8rem,4vw,3.5rem);">
+            一万年太久，只争朝夕
+        </div>
+        <div class="subtitle" style="margin-top:2rem;">与光同行 · 无有滞时</div>
+    </section>
+
+    <!-- 20 · 封底 -->
+    <section class="slide">
+        <div class="big-char" style="font-size:clamp(3rem,8vw,6rem);">旦</div>
+        <h1 class="title">光通启明 · 汉字光宇世界</h1>
+        <div class="body-text" style="margin-top:2rem;">
+            <p>上海易通和维科技有限责任公司</p>
+            <p>yitonghewei.com</p>
+            <p>contact@yitonghewei.com</p>
+            <p class="highlight" style="margin-top:1.5rem;">一画开天，仁以为心</p>
+        </div>
+    </section>
+
+</div>
+
+<!-- 底部控制 -->
+<div class="controls">
+    <span class="page-indicator" id="pageIndicator">1 / 20</span>
+    <button class="nav-btn" id="prevBtn" title="上一页">‹</button>
+    <button class="nav-btn" id="nextBtn" title="下一页">›</button>
+</div>
+
+<!-- 进度条 -->
+<div class="progress-bar" id="progressBar" style="width:5%;"></div>
+
+<script>
+(function() {
+    'use strict';
+
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+    let current = 0;
+
+    const pageIndicator = document.getElementById('pageIndicator');
+    const progressBar = document.getElementById('progressBar');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function goTo(index) {
+        if (index < 0) index = 0;
+        if (index >= total) index = total - 1;
+
+        slides[current].classList.remove('active');
+        current = index;
+        slides[current].classList.add('active');
+
+        pageIndicator.textContent = (current + 1) + ' / ' + total;
+        progressBar.style.width = ((current + 1) / total * 100) + '%';
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    // 键盘控制
+    document.addEventListener('keydown', function(e) {
+        switch(e.key) {
+            case 'ArrowRight':
+            case 'ArrowDown':
+            case ' ':
+            case 'PageDown':
+                e.preventDefault();
+                next();
+                break;
+            case 'ArrowLeft':
+            case 'ArrowUp':
+            case 'PageUp':
+                e.preventDefault();
+                prev();
+                break;
+            case 'Home':
+                e.preventDefault();
+                goTo(0);
+                break;
+            case 'End':
+                e.preventDefault();
+                goTo(total - 1);
+                break;
+            case 'f':
+            case 'F':
+                toggleFullscreen();
+                break;
+        }
+    });
+
+    // 按钮控制
+    nextBtn.addEventListener('click', next);
+    prevBtn.addEventListener('click', prev);
+
+    // 触摸滑动（移动端）
+    let touchStartX = 0;
+    document.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    document.addEventListener('touchend', function(e) {
+        const touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) next();
+            else prev();
+        }
+    }, { passive: true });
+
+    // 全屏
+    function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
+    }
+
+    // 鼠标滚轮（节流）
+    let wheelLock = false;
+    document.addEventListener('wheel', function(e) {
+        if (wheelLock) return;
+        if (Math.abs(e.deltaY) < 30) return;
+        wheelLock = true;
+        setTimeout(() => { wheelLock = false; }, 800);
+        if (e.deltaY > 0) next();
+        else prev();
+    }, { passive: true });
+
+    // 初始化
+    goTo(0);
+
+    console.log('%c光通启明 · 汉字光宇世界', 'color:#ffaa00;font-size:1.5rem;font-family:serif;');
+    console.log('%c演示稿已就绪。操作：← → 翻页 | F 全屏 | 滚轮 / 触摸滑动', 'color:#666;');
+})();
+</script>
+
+</body>
+</html>
+
+

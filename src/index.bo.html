@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="bo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>光通启明 · 汉字之光（藏文版）</title>
+    <meta name="author" content="上海易通和维科技有限责任公司">
+    <meta name="description" content="让每一个人，由汉字，通透光明人性，融达世纪光宇。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tibetan:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: "Noto Serif Tibetan", "Microsoft Himalaya", "Kailasa", "Jomolhari", serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "光 明 旦 启 日 月 星 辉 曜 曦 煦 昭 映 昧 昃 昙 昪 昶 晟 晞 晢 晧 晨 普 景 晴 晶 智 暖 暗 曌";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            color: rgba(255, 220, 150, 0.02);
+            font-size: 8vw;
+            font-weight: 700;
+            line-height: 1.2;
+            white-space: pre-wrap;
+            word-break: break-all;
+            pointer-events: none;
+            z-index: 1;
+            transform: rotate(-5deg) scale(1.5);
+            letter-spacing: 2vw;
+            text-shadow: 0 0 5px rgba(255,170,0,0.05);
+            animation: subtleShift 40s infinite alternate ease-in-out;
+        }
+
+        @keyframes subtleShift {
+            0% { transform: rotate(-5deg) scale(1.5) translateX(0); opacity: 0.02; }
+            100% { transform: rotate(-3deg) scale(1.6) translateX(-2%); opacity: 0.03; }
+        }
+
+        .splash {
+            position: fixed; top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: #000;
+            z-index: 2000;
+            display: flex; justify-content: center; align-items: center;
+            pointer-events: none;
+            animation: fadeOut 2s ease-in-out 2s forwards;
+        }
+
+        .splash .light {
+            width: 10px; height: 10px;
+            background: radial-gradient(circle, #ffd966, #ffaa00, #ff8800);
+            border-radius: 50%;
+            box-shadow: 0 0 50px 10px #ffaa00;
+            animation: expand 1.8s ease-out forwards;
+        }
+
+        @keyframes expand {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(80); opacity: 0.8; }
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            position: relative;
+            z-index: 100;
+        }
+
+        .lang-switcher {
+            position: fixed;
+            top: 1.5rem;
+            right: 2rem;
+            z-index: 200;
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            max-width: 400px;
+            justify-content: flex-end;
+        }
+
+        .lang-switcher a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            padding: 0.3rem 0.6rem;
+            border: 1px solid rgba(255,170,0,0.2);
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-family: sans-serif;
+        }
+
+        .lang-switcher a:hover,
+        .lang-switcher a.active {
+            color: #ffaa00;
+            border-color: #ffaa00;
+            background: rgba(255,170,0,0.1);
+        }
+
+        .hero {
+            min-height: 90vh;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid rgba(255,170,0,0.2);
+            margin-bottom: 3rem;
+        }
+
+        .logo-top {
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            color: #ffaa00;
+            text-shadow: 0 0 10px #ffaa00;
+            font-weight: 300;
+            z-index: 10;
+        }
+
+        .logo-top span {
+            font-size: 1rem;
+            margin-left: 1rem;
+            color: #fff;
+            opacity: 0.7;
+        }
+
+        .main-title-row {
+            display: flex; flex-direction: row;
+            align-items: center; justify-content: center;
+            gap: 1.5rem; flex-wrap: wrap;
+            margin: 2rem 0 1rem;
+            z-index: 10;
+        }
+
+        .title-left, .title-right {
+            font-size: clamp(1.8rem, 6vw, 3.5rem);
+            font-weight: 500;
+            color: #ffaa00;
+            text-shadow: 0 0 20px #ffaa00;
+            white-space: nowrap;
+        }
+
+        .logo-dan {
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            width: clamp(60px, 15vw, 120px);
+            height: clamp(60px, 15vw, 120px);
+            position: relative;
+        }
+
+        .sun {
+            width: 80%; height: 60%;
+            background: radial-gradient(circle at 30% 30%, #fff7b0, #ffaa00);
+            border-radius: 50%;
+            box-shadow: 0 0 30px #ffaa00;
+            margin-bottom: -5px;
+            position: relative; z-index: 2;
+        }
+
+        .horizon {
+            width: 100%; height: 8px;
+            background: linear-gradient(to bottom, #b37400, #5c3e00);
+            border-radius: 4px;
+            box-shadow: 0 0 15px #ffaa00;
+            position: relative; z-index: 1;
+        }
+
+        .light-gap {
+            position: absolute;
+            top: 52%; left: 0;
+            width: 100%; height: 4px;
+            background: rgba(255,255,200,0.8);
+            filter: blur(2px);
+            box-shadow: 0 0 20px #ffffaa;
+            z-index: 3;
+            transform: translateY(-50%);
+        }
+
+        .sub-title {
+            font-size: clamp(1rem, 3vw, 1.6rem);
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 2rem auto 3rem;
+            color: #f0e6d0;
+            border-left: 3px solid #ffaa00;
+            border-right: 3px solid #ffaa00;
+            padding: 1.2rem 2rem;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(2px);
+            border-radius: 60px;
+            z-index: 10;
+        }
+
+        .sub-title .emph {
+            color: #ffaa00;
+            font-weight: 400;
+            font-size: 1.15em;
+        }
+
+        .tri-nav {
+            display: flex; flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1rem 0 4rem;
+            font-size: 1.3rem;
+            z-index: 10;
+        }
+
+        .tri-nav a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s;
+            padding: 0.3rem 0.8rem;
+            font-weight: 300;
+        }
+
+        .tri-nav a:hover {
+            border-bottom-color: #ffaa00;
+            color: #ffaa00;
+            transform: translateY(-2px);
+            text-shadow: 0 0 8px #ffaa00;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 20px; left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            color: #aaa;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+        }
+
+        .section {
+            padding: 5rem 0;
+            border-bottom: 1px solid rgba(255,170,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-header { text-align: center; margin-bottom: 3rem; }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            border-bottom: 2px solid #ffaa00;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: #aaa;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,170,0,0.15);
+            border-radius: 24px;
+            padding: 2rem 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255,170,0,0.05);
+        }
+
+        .card:hover {
+            border-color: #ffaa00;
+            box-shadow: 0 0 30px rgba(255,170,0,0.25);
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 0.8rem;
+            color: #ffaa00;
+        }
+
+        .card .sub {
+            font-size: 0.95rem;
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            border-left: 2px solid #ffaa00;
+            padding-left: 1rem;
+        }
+
+        .card p { color: #ddd; font-size: 0.95rem; }
+
+        .truth-note {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 1rem;
+            color: #f0e6d0;
+            border-left: 2px solid #ffaa00;
+            border-right: 2px solid #ffaa00;
+            padding: 1rem 2rem;
+            display: inline-block;
+            background: rgba(255,170,0,0.05);
+            border-radius: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 2.5rem;
+            border: 1px solid #ffaa00;
+            background: transparent;
+            color: #ffaa00;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: 0.3s;
+            border-radius: 40px;
+        }
+
+        .btn:hover {
+            background: #ffaa00;
+            color: #000;
+            box-shadow: 0 0 20px #ffaa00;
+        }
+
+        .core-area { text-align: center; padding: 4rem 0; }
+
+        .four-xiang {
+            display: flex; flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .xiang-item {
+            flex: 1 1 200px;
+            border-top: 1px solid #ffaa00;
+            padding-top: 1.5rem;
+        }
+
+        .xiang-item .name {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: #ffaa00;
+        }
+
+        .xiang-item .desc { color: #aaa; font-size: 0.9rem; }
+
+        .five-steles {
+            display: flex; flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem 2rem;
+            margin: 3rem 0;
+            font-size: 1rem;
+        }
+
+        .stele {
+            color: #fff;
+            border-left: 2px solid #ffaa00;
+            padding-left: 1rem;
+            font-weight: 300;
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-weight: 300;
+            font-style: italic;
+            color: #ffaa00;
+            margin: 3rem 0 2rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 3rem 0 1rem;
+            color: #666;
+            border-top: 1px solid rgba(255,170,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer .slogan {
+            font-size: 1.3rem;
+            color: #ffaa00;
+            margin: 1rem 0;
+        }
+
+        .footer .addr { font-size: 0.95rem; margin: 0.5rem 0; }
+
+        .footer .contact { font-size: 0.9rem; margin: 0.3rem 0; }
+
+        .footer .contact a {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer .contact a:hover { color: #ffaa00; }
+
+        @media (max-width: 700px) {
+            .main-title-row { gap: 0.8rem; }
+            .title-left, .title-right { font-size: 1.6rem; }
+            .sub-title { font-size: 1rem; padding: 0.8rem; }
+            .tri-nav { gap: 1rem; font-size: 1rem; }
+            .section-header h2 { font-size: 1.5rem; }
+            .lang-switcher {
+                top: auto; bottom: 1rem; right: 1rem; left: 1rem;
+                max-width: none; justify-content: center; gap: 0.4rem;
+            }
+            .lang-switcher a { font-size: 0.7rem; padding: 0.2rem 0.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-switcher">
+        <a href="index.html">中文</a>
+        <a href="index.en.html">EN</a>
+        <a href="index.fr.html">FR</a>
+        <a href="index.de.html">DE</a>
+        <a href="index.it.html">IT</a>
+        <a href="index.ja.html">JA</a>
+        <a href="index.ru.html">RU</a>
+        <a href="index.ko.html">KO</a>
+        <a href="index.ar.html">AR</a>
+        <a href="index.bo.html" class="active">བོད</a>
+    </div>
+
+    <div class="splash" id="splash">
+        <div class="light"></div>
+    </div>
+
+    <div class="container">
+        <div class="hero">
+            <div class="logo-top">⚡ 汉字光项目 <span>HANZI LIGHT</span></div>
+
+            <div class="main-title-row">
+                <span class="title-left">光通启明</span>
+                <div class="logo-dan">
+                    <div class="sun"></div>
+                    <div class="horizon"></div>
+                    <div class="light-gap"></div>
+                </div>
+                <span class="title-right">汉字之光</span>
+            </div>
+
+            <div class="sub-title">
+                <span class="emph">让每一个人</span>，
+                <span class="emph">由汉字</span>，<br>
+                通透光明人性，融达世纪光宇
+            </div>
+
+            <div class="tri-nav">
+                <a href="#guangku">光库</a>
+                <a href="#guangyi">光翼</a>
+                <a href="#guangquan">光圈</a>
+                <a href="chat.html">问羲和</a>
+            </div>
+            <div class="scroll-hint">向下滑动 进入光中</div>
+        </div>
+
+        <section id="guangku" class="section">
+            <div class="section-header">
+                <h2>⛭ 光库 ⛭</h2>
+                <p>汉字的数字基因库</p>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>字源库</h3>
+                    <div class="sub">溯源流变 · 3D演变动画</div>
+                    <p>甲骨→金文→篆→隶→楷→行→草，每个字的完整生命历程。点击穿越三千年。</p>
+                </div>
+                <div class="card">
+                    <h3>释义库</h3>
+                    <div class="sub">多维义项 · 文化意象</div>
+                    <p>《说文》《尔雅》历代辞书集成，并呈现汉字在诗文中的意象流变。</p>
+                </div>
+                <div class="card">
+                    <h3>艺术库</h3>
+                    <div class="sub">历代书迹 · 器物铭文</div>
+                    <p>百万级单字库，从甲骨到民国，从碑帖到青铜，尽收眼底。</p>
+                </div>
+            </div>
+            <div style="text-align:center;">
+                <div class="truth-note">
+                    字源库已收录 <span style="color:#ffaa00;font-weight:700;">3,755</span> 字 · 持续生长中
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="guangku.html" class="btn">进入光库</a>
+            </div>
+        </section>
+
+        <section id="guangyi" class="section">
+            <div class="section-header">
+                <h2>✦ 光翼 ✦</h2>
+                <p>让汉字可溯、可读、可赏、可写</p>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>字源时空</h3>
+                    <div class="sub">穿越三千年 · VR体验</div>
+                    <p>3D时间轴滑动，走进一片甲骨，触摸刻辞，感受汉字在历史中呼吸。</p>
+                </div>
+                <div class="card">
+                    <h3>汉字星际</h3>
+                    <div class="sub">探索宇宙 · 每日一字</div>
+                    <p>星系视图，每个字是一颗星。点击展开六维信息（象形音义理韵）。</p>
+                </div>
+                <div class="card">
+                    <h3>AI书法助手</h3>
+                    <div class="sub">六体生成 · 临摹辅助</div>
+                    <p>一键切换甲骨至草书，上传你的字，AI以名家风格重写。</p>
+                </div>
+            </div>
+            <div style="text-align:center;">
+                <div class="truth-note">
+                    光翼 · 正在建设中
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="guangyi.html" class="btn">展开光翼</a>
+            </div>
+        </section>
+
+        <section id="guangquan" class="section">
+            <div class="section-header">
+                <h2>◈ 光圈 ◈</h2>
+                <p>让每一个走进来的人，都成为发光体</p>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>我的汉字之家</h3>
+                    <div class="sub">个人空间 · 作品厅·收藏阁</div>
+                    <p>上传你的书写，记录成长轨迹，生成你的“汉字年轮”。</p>
+                </div>
+                <div class="card">
+                    <h3>造象者群落</h3>
+                    <div class="sub">同好互评 · 师徒工坊</div>
+                    <p>发现谁和你研究同一个字，互评互学，一起创造新象。</p>
+                </div>
+                <div class="card">
+                    <h3>研究枢机</h3>
+                    <div class="sub">学术之光 · 数据分析</div>
+                    <p>大数据分析工具、版本比对、API开放，学者专属的圣地。</p>
+                </div>
+            </div>
+            <div style="text-align:center;">
+                <div class="truth-note">
+                    光圈 · 即将开放
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="guangquan.html" class="btn">走进光圈</a>
+            </div>
+        </section>
+
+        <section class="core-area">
+            <div class="section-header">
+                <h2>✧ 光 核 ✧</h2>
+                <p>四象环拱 · 五碑永镇</p>
+            </div>
+
+            <div class="four-xiang">
+                <div class="xiang-item">
+                    <div class="name">物象</div>
+                    <div class="desc">先民所见</div>
+                </div>
+                <div class="xiang-item">
+                    <div class="name">意象</div>
+                    <div class="desc">心中所感</div>
+                </div>
+                <div class="xiang-item">
+                    <div class="name">道象</div>
+                    <div class="desc">文明所凝</div>
+                </div>
+                <div class="xiang-item">
+                    <div class="name">造象</div>
+                    <div class="desc">我之所创</div>
+                </div>
+            </div>
+
+            <div class="five-steles">
+                <span class="stele">天地碑</span>
+                <span class="stele">古今碑</span>
+                <span class="stele">人心碑</span>
+                <span class="stele">玄心碑</span>
+                <span class="stele">通心碑</span>
+            </div>
+
+            <div class="quote">
+                “通心之密，唯有中国汉字”
+            </div>
+
+            <div style="margin: 3rem 0; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                <a href="guangku.html" class="btn">溯源</a>
+                <a href="guangyi.html" class="btn">探索</a>
+                <a href="guangquan.html" class="btn">创造</a>
+                <a href="chat.html" class="btn">传承</a>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="slogan">一万年太久，只争朝夕</div>
+            <div class="slogan" style="font-size:1.1rem;">与光同行 · 无有滞时</div>
+
+            <div class="addr">数字之址：yitonghewei.com</div>
+            <div class="addr">物理之址：上海</div>
+
+            <div class="contact">
+                商务：<a href="mailto:contact@yitonghewei.com">contact@yitonghewei.com</a>
+            </div>
+            <div class="contact">
+                技术：<a href="mailto:support@yitonghewei.com">support@yitonghewei.com</a>
+            </div>
+
+            <div style="margin-top: 2rem; font-size: 0.8rem;">
+                © 2026 上海易通和维科技有限责任公司 · 光通启明
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            setTimeout(() => {
+                const splash = document.getElementById('splash');
+                if (splash) splash.style.display = 'none';
+            }, 2800);
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const id = this.getAttribute('href');
+                    if (id === "#") return;
+                    const target = document.querySelector(id);
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
+
+
+

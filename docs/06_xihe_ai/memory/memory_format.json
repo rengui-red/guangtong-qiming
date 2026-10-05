@@ -1,0 +1,56 @@
+{
+  "说明": "羲和记忆存储格式",
+  "版本": "1.0",
+  "最后更新": "2026-04-16",
+
+  "user_memory": {
+    "user_id": "自动生成",
+    "name": "用户希望被怎么称呼",
+    "first_visit": "2026-04-16",
+    "last_visit": "2026-04-16",
+    "visit_count": 1,
+
+    "profile": {
+      "preferences": ["喜欢拆字", "喜欢听故事"],
+      "pace": "slow",
+      "taboos": ["不喜欢被追问"]
+    },
+
+    "history": [
+      {
+        "time": "2026-04-16T14:30:00",
+        "char": "仁",
+        "emotion": "好奇",
+        "xihe_summary": "拆字：二人并肩",
+        "user_feedback": "用户沉默2秒后说'原来是这样'"
+      }
+    ],
+
+    "growth": [
+      {
+        "time": "2026-04-16",
+        "event": "用户第一次主动用'仁'字解读自己"
+      }
+    ]
+  },
+
+  "constraints": {
+    "max_history": 100,
+    "max_growth": 50,
+    "ttl_days": 365,
+    "auto_clean": true,
+    "privacy_level": "high"
+  },
+
+  "storage": {
+    "type": "memory",
+    "backend": "redis_or_database",
+    "encryption": true,
+    "backup": true
+  }
+}
+
+
+
+
+

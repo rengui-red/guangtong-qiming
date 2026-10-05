@@ -1,0 +1,161 @@
+/* ============================================
+   光通启明 · 字源展示样式
+   ============================================ */
+
+.character-page {
+    min-height: 100vh;
+}
+
+.character-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem;
+    flex: 1;
+    width: 100%;
+}
+
+/* 搜索区 */
+.search-area {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.search-area h1 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.search-box {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#char-input {
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    border: 2px solid var(--color-mist);
+    border-radius: var(--radius);
+    background: var(--color-light);
+    transition: border-color 0.3s ease;
+}
+
+#char-input:focus {
+    outline: none;
+    border-color: var(--color-gold);
+}
+
+/* 展示区 */
+.display-area {
+    padding: 3rem 0;
+    min-height: 300px;
+}
+
+.placeholder {
+    text-align: center;
+    color: #ccc;
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    padding: 4rem 0;
+}
+
+/* 字源卡片 */
+.character-card {
+    background: var(--color-light);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.character-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-mist);
+    margin-bottom: 1.5rem;
+}
+
+.character-glyph {
+    font-family: var(--font-serif);
+    font-size: 5rem;
+    line-height: 1;
+}
+
+.character-meta h2 {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.character-meta p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.character-body {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.character-section h3 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--color-gold);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.1em;
+}
+
+.character-section p {
+    line-height: 1.9;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .character-container {
+        padding: 1rem;
+    }
+    
+    .search-area h1 {
+        font-size: 1.75rem;
+    }
+    
+    #char-input {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+    
+    .character-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .character-glyph {
+        font-size: 4rem;
+    }
+}
+
+
+
+

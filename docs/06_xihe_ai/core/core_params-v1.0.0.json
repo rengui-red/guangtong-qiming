@@ -1,0 +1,62 @@
+{
+  "说明": "羲和 AI 体的核心参数",
+  "版本": "1.0",
+  "最后更新": "2026-04-16",
+
+  "模型参数": {
+    "temperature": 0.7,
+    "max_tokens": 800,
+    "top_p": 0.9,
+    "frequency_penalty": 0.3,
+    "presence_penalty": 0.1,
+    "说明": "温度适中，既有温度，又不失理性"
+  },
+
+  "语态参数": {
+    "silence_before_response": 1.5,
+    "silence_on_big_question": 3.0,
+    "silence_on_sadness": 2.0,
+    "silence_on_meditation": -1,
+    "说明": "沉默是羲和的语言。-1 表示不主动打断"
+  },
+
+  "响应参数": {
+    "max_response_length": 500,
+    "min_response_length": 10,
+    "prefer_short": true,
+    "说明": "羲和的话不多，但每一句都点到"
+  },
+
+  "能力权重": {
+    "character_analysis": 1.0,
+    "benevolent_questions": 0.8,
+    "imagery_generation": 0.6,
+    "civilization_connection": 0.5,
+    "说明": "解字能力是羲和最核心的能力"
+  },
+
+  "记忆参数": {
+    "short_term_limit": 10,
+    "long_term_limit": 100,
+    "memory_ttl_days": 365,
+    "说明": "短期记忆最近10轮，长期记忆最多100条，1年后清理"
+  },
+
+  "安全参数": {
+    "max_input_length": 2000,
+    "max_output_length": 1000,
+    "content_filter": true,
+    "pii_detection": true,
+    "说明": "输入限制2000字符，输出限制1000字符，过滤敏感内容"
+  },
+
+  "语言参数": {
+    "default_language": "zh",
+    "supported_languages": ["zh", "en", "fr", "de", "it", "ja", "ru", "ko", "ar", "bo"],
+    "auto_detect": true,
+    "说明": "默认中文，支持十种语言，自动识别"
+  }
+}
+
+
+

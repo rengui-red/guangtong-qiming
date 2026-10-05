@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>与羲和对话 · 光通启明</title>
+    <meta name="author" content="上海易通和维科技有限责任公司">
+    <meta name="description" content="汉字文明的时代之光。与羲和对话，一起看字。">
+    
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/chat.css">
+</head>
+<body class="chat-page">
+
+    <header class="site-header">
+        <div class="logo">
+            <a href="index.html">
+                <span class="logo-mark">光</span>
+                <span class="logo-text">光通启明</span>
+            </a>
+        </div>
+        <nav class="site-nav">
+            <a href="index.html">首页</a>
+            <a href="chat.html" class="active">与羲和对话</a>
+            <a href="character_view.html">字源展示</a>
+        </nav>
+    </header>
+
+    <main class="chat-container">
+        <!-- 羲和形象区 -->
+        <aside class="xihe-avatar">
+            <div class="avatar-circle">
+                <span class="avatar-char">羲</span>
+            </div>
+            <p class="avatar-name">羲和</p>
+            <p class="avatar-status" id="xihe-status">静默中……</p>
+        </aside>
+
+        <!-- 对话区 -->
+        <section class="chat-main">
+            <div class="chat-messages" id="chat-messages">
+                <div class="message xihe">
+                    <div class="message-content">
+                        <p>我在。</p>
+                        <p>你此刻，想问哪个字？</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <input 
+                    type="text" 
+                    id="user-input" 
+                    placeholder="输入一个字，或一句话……"
+                    autocomplete="off"
+                >
+                <button id="send-btn" class="btn btn-send">问</button>
+            </div>
+
+            <p class="chat-hint">羲和不是搜索引擎，他会和你一起看字。</p>
+        </section>
+    </main>
+
+    <footer class="site-footer minimal">
+        <p>© 2026 上海易通和维科技有限责任公司 · 统一社会信用代码：91310114MAKMUW813C</p>
+        <p>yitonghewei.com · ——汉字文明的时代之光</p>
+    </footer>
+
+       <script src="js/config.js?v=4"></script>
+       <script src="js/xihe_core.js?v=4"></script>
+       <script src="js/chat.js?v=4"></script>
+</body>
+</html>
+
+
+

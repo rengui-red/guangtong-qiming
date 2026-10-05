@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字源展示 · 光通启明</title>
+    <meta name="author" content="上海易通和维科技有限责任公司">
+    
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/character_view.css">
+</head>
+<body class="character-page">
+
+    <header class="site-header">
+        <div class="logo">
+            <a href="index.html">
+                <span class="logo-mark">光</span>
+                <span class="logo-text">光通启明</span>
+            </a>
+        </div>
+        <nav class="site-nav">
+            <a href="index.html">首页</a>
+            <a href="chat.html">与羲和对话</a>
+            <a href="character_view.html" class="active">字源展示</a>
+        </nav>
+    </header>
+
+    <main class="character-container">
+        <!-- 搜索区 -->
+        <section class="search-area">
+            <h1>看一个字</h1>
+            <p class="subtitle">输入任意汉字，看它从甲骨文走到今天。</p>
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="char-input" 
+                    maxlength="1" 
+                    placeholder="输 入 一 个 字"
+                >
+                <button id="search-btn" class="btn btn-primary">看</button>
+            </div>
+        </section>
+
+        <!-- 展示区 -->
+        <section class="display-area" id="display-area">
+            <div class="placeholder">
+                <p>字在等你。</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-contact">
+            <p>商务：<a href="mailto:contact@yitonghewei.com">contact@yitonghewei.com</a></p>
+            <p>技术：<a href="mailto:support@yitonghewei.com">support@yitonghewei.com</a></p>
+        </div>
+        <p>© 2026 上海易通和维科技有限责任公司 · yitonghewei.com</p>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/xihe_core.js"></script>
+    <script src="js/character_view.js"></script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guangtong Qiming · Master Catalog</title>
+<meta name="author" content="Shanghai Yitonghewei Technology Co., Ltd.">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+    font-family: "Noto Serif", "Times New Roman", serif;
+    color: #fff;
+}
+
+.stage {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 6rem;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s;
+    background: radial-gradient(circle at 50% 40%, rgba(255,170,0,0.04), transparent 70%), #000;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slide::before {
+    content: "光 明 旦 启 日 月 星 辉 曜 曦 煦 昭 映 昧 昃 昙 昪 昶 晟 晞 晢 晧 晨 普 景 晴 晶 智 暖 暗 曌";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    color: rgba(255, 220, 150, 0.02);
+    font-size: 7vw;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: pre-wrap;
+    word-break: break-all;
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(-5deg) scale(1.5);
+    letter-spacing: 2vw;
+}
+
+.slide > * { position: relative; z-index: 1; }
+
+/* Text */
+.title {
+    font-size: clamp(1.8rem, 4.5vw, 3.5rem);
+    font-weight: 500;
+    color: #ffaa00;
+    letter-spacing: 0.1rem;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 30px rgba(255,170,0,0.3);
+}
+
+.subtitle {
+    font-size: clamp(1.1rem, 2.2vw, 1.8rem);
+    font-weight: 300;
+    color: #f0e6d0;
+    letter-spacing: 0.08rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.body-text {
+    font-size: clamp(0.95rem, 1.6vw, 1.3rem);
+    font-weight: 300;
+    color: #ddd;
+    line-height: 2.0;
+    letter-spacing: 0.03rem;
+    max-width: 900px;
+}
+
+.body-text p { margin-bottom: 0.5rem; }
+
+.highlight { color: #ffaa00; font-weight: 400; }
+
+.quote {
+    font-size: clamp(1.2rem, 2.8vw, 2.2rem);
+    font-weight: 300;
+    font-style: italic;
+    color: #ffaa00;
+    line-height: 1.8;
+    letter-spacing: 0.08rem;
+}
+
+.footer-info {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    color: #666;
+    letter-spacing: 0.08rem;
+}
+
+.small-note {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 1.5rem;
+}
+
+.big-char {
+    font-size: clamp(4rem, 12vw, 10rem);
+    color: #ffaa00;
+    text-shadow: 0 0 60px rgba(255,170,0,0.5);
+    line-height: 1;
+    margin: 0.5rem 0;
+    font-family: "Noto Serif SC", serif;
+}
+
+/* Data list */
+.data-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    text-align: left;
+    max-width: 800px;
+    width: 100%;
+}
+
+.data-item {
+    font-size: clamp(0.95rem, 1.5vw, 1.25rem);
+    color: #ddd;
+    line-height: 1.8;
+    padding-left: 1.5rem;
+    border-left: 2px solid #ffaa00;
+}
+
+.data-item.dim { color: #777; border-left-color: #444; }
+
+/* Four images */
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+    width: 100%;
+    max-width: 900px;
+}
+
+.grid-item {
+    border-top: 1px solid #ffaa00;
+    padding-top: 1rem;
+    text-align: center;
+}
+
+.grid-item .name {
+    font-size: clamp(1.1rem, 1.8vw, 1.6rem);
+    color: #ffaa00;
+    margin-bottom: 0.4rem;
+}
+
+.grid-item .desc { font-size: 0.85rem; color: #999; }
+
+.stele-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem 1.8rem;
+    margin: 1.2rem 0;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+}
+
+.stele {
+    border-left: 2px solid #ffaa00;
+    padding-left: 0.8rem;
+    color: #fff;
+    font-weight: 300;
+}
+
+/* Timeline */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+    max-width: 800px;
+    width: 100%;
+}
+
+.tl-item {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    text-align: left;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(255,170,0,0.15);
+}
+
+.tl-time {
+    min-width: 130px;
+    font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+    color: #ffaa00;
+    font-weight: 500;
+}
+
+.tl-content {
+    font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+    color: #ddd;
+}
+
+/* Chapter navigation cards */
+.chapter-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.chapter-card {
+    border: 1px solid rgba(255,170,0,0.3);
+    border-radius: 12px;
+    padding: 1.5rem 1.2rem;
+    background: rgba(0,0,0,0.5);
+    text-align: left;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.chapter-card:hover {
+    border-color: #ffaa00;
+    box-shadow: 0 0 25px rgba(255,170,0,0.2);
+    transform: translateY(-3px);
+}
+
+.chapter-num {
+    font-size: 0.85rem;
+    color: #ffaa00;
+    letter-spacing: 0.15rem;
+    margin-bottom: 0.5rem;
+}
+
+.chapter-name {
+    font-size: clamp(1rem, 1.6vw, 1.35rem);
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 0.4rem;
+}
+
+.chapter-desc {
+    font-size: 0.8rem;
+    color: #999;
+    line-height: 1.5;
+}
+
+/* Controls */
+.controls {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 2rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 100;
+    align-items: center;
+}
+
+.page-indicator {
+    color: #666;
+    font-family: sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    margin-right: 0.5rem;
+}
+
+.nav-btn {
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255,170,0,0.3);
+    background: rgba(0,0,0,0.5);
+    color: #ffaa00;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.nav-btn:hover {
+    background: #ffaa00;
+    color: #000;
+    border-color: #ffaa00;
+}
+
+.progress-bar {
+    position: fixed;
+    bottom: 0; left: 0;
+    height: 3px;
+    background: #ffaa00;
+    transition: width 0.4s ease;
+    z-index: 100;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .slide { padding: 2rem 1.2rem; }
+    .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .chapter-grid { grid-template-columns: 1fr; }
+    .controls { bottom: 1rem; right: 1rem; }
+    .tl-item { flex-direction: column; gap: 0.4rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="stage" id="stage">
+
+    <!-- ============ 00 · Cover ============ -->
+    <section class="slide active">
+        <h1 class="title" style="font-size:clamp(2rem,5.5vw,4.5rem);">Guangtong Qiming</h1>
+        <h2 class="subtitle" style="font-size:clamp(1.2rem,3vw,2.4rem);">The Hanzi Light Universe</h2>
+        <div class="quote" style="margin-top:2rem;">One stroke opens the sky. Benevolence is the heart.</div>
+        <div class="footer-info">Shanghai Yitonghewei Technology Co., Ltd. · yitonghewei.com</div>
+    </section>
+
+    <!-- ============ 01 · Master Catalog ============ -->
+    <section class="slide">
+        <h1 class="title" style="font-size:clamp(1.5rem,3.5vw,2.5rem);">MASTER CATALOG</h1>
+        <div class="chapter-grid">
+            <div class="chapter-card" onclick="goTo(2)">
+                <div class="chapter-num">PART 01</div>
+                <div class="chapter-name">Origin</div>
+                <div class="chapter-desc">Characters are being forgotten · What we believe</div>
+            </div>
+            <div class="chapter-card" onclick="goTo(5)">
+                <div class="chapter-num">PART 02</div>
+                <div class="chapter-name">Mission</div>
+                <div class="chapter-desc">Core mission · What Guangtong Qiming is</div>
+            </div>
+            <div class="chapter-card" onclick="goTo(7)">
+                <div class="chapter-num">PART 03</div>
+                <div class="chapter-name">Four Layers</div>
+                <div class="chapter-desc">Archive · Wings · Circle · Core</div>
+            </div>
+            <div class="chapter-card" onclick="goTo(11)">
+                <div class="chapter-num">PART 04</div>
+                <div class="chapter-name">Xihe</div>
+                <div class="chapter-desc">The Guardian · Four Abilities</div>
+            </div>
+            <div class="chapter-card" onclick="goTo(14)">
+                <div class="chapter-num">PART 05</div>
+                <div class="chapter-name">The World</div>
+                <div class="chapter-desc">Ten languages · Going global</div>
+            </div>
+            <div class="chapter-card" onclick="goTo(16)">
+                <div class="chapter-num">PART 06</div>
+                <div class="chapter-name">The Future</div>
+                <div class="chapter-desc">Roadmap · Join us</div>
+            </div>
+        </div>
+        <div class="small-note">Click any chapter to jump · Or press → to browse</div>
+    </section>
+
+    <!-- ============ 02 · PART 01 Origin ============ -->
+    <section class="slide">
+        <div class="chapter-num" style="font-size:1rem;color:#ffaa00;letter-spacing:0.4rem;">PART 01</div>
+        <h1 class="title">ORIGIN</h1>
+        <div class="subtitle">Why we do this</div>
+    </section>
+
+    <!-- ============ 03 · A Question ============ -->
+    <section class="slide">
+        <h1 class="title">If Chinese characters could speak,<br>what would they tell you?</h1>
+    </section>
+
+    <!-- ============ 04 · An Answer ============ -->
+    <section class="slide">
+        <div class="big-char">仁</div>
+        <h1 class="title" style="font-size:clamp(1.4rem,3vw,2.3rem);">
+            They would say:<br>
+            You are here.<br>
+            I have waited three thousand years.
+        </h1>
+    </section>
+
+    <!-- ============ 05 · PART 02 Mission ============ -->
+    <section class="slide">
+        <div class="chapter-num" style="font-size:1rem;color:#ffaa00;letter-spacing:0.4rem;">PART 02</div>
+        <h1 class="title">MISSION</h1>
+        <div class="subtitle">What exactly we are doing</div>
+    </section>
+
+    <!-- ============ 06 · Core Mission ============ -->
+    <section class="slide">
+        <h1 class="title">To gently touch the heart<br>of everyone who asks about a character</h1>
+        <div class="body-text" style="margin-top:1.5rem;">
+            <p>To let them see themselves in that character.</p>
+            <p>To let them remember the forgotten "cultural humanity."</p>
+            <p>To let them step out of the small room called "instinct."</p>
+            <p class="highlight">Stand in the open field, and breathe — the air of benevolence.</p>
+        </div>
+    </section>
+
+    <!-- ============ 07 · PART 03 Four Layers ============ -->
+    <section class="slide">
+        <div class="chapter-num" style="font-size:1rem;color:#ffaa00;letter-spacing:0.4rem;">PART 03</div>
+        <h1 class="title">FOUR LAYERS</h1>
+        <div class="subtitle">Archive · Wings · Circle · Core</div>
+    </section>
+
+    <!-- ============ 08 · Light Archive ============ -->
+    <section class="slide">
+        <h1 class="title">Light Archive</h1>
+        <div class="subtitle">The Digital Gene Bank of Chinese Characters</div>
+        <div class="data-list">
+            <div class="data-item">Etymology: <span class="highlight">3,755</span> characters archived · Growing</div>
+            <div class="data-item">Semantics: Integration of Shuowen, Erya, and dynastic dictionaries</div>
+            <div class="data-item">Calligraphy: Historical scripts, inscriptions on bronze</div>
+        </div>
+    </section>
+
+    <!-- ============ 09 · Light Wings ============ -->
+    <section class="slide">
+        <h1 class="title">Light Wings</h1>
+        <div class="subtitle">Traceable · Readable · Admirable · Writable</div>
+        <div class="data-list">
+            <div class="data-item">Character Time-Space: A 3,000-year VR journey</div>
+            <div class="data-item">Hanzi Galaxy: Every character is a star</div>
+            <div class="data-item">AI Calligraphy Assistant: Six scripts, one click</div>
+        </div>
+        <div class="small-note">Under Construction</div>
+    </section>
+
+    <!-- ============ 10 · Light Circle + Core ============ -->
+    <section class="slide">
+        <h1 class="title">Light Circle · Light Core</h1>
+        <div class="subtitle">Everyone who enters becomes a luminous being</div>
+        <div class="data-list">
+            <div class="data-item"><span class="highlight">Circle</span>: My Hanzi Home · Community of Image-Makers · Research Nexus</div>
+            <div class="data-item"><span class="highlight">Core</span>: Four Images Encircling · Five Steles Forever</div>
+        </div>
+        <div class="grid-4">
+            <div class="grid-item"><div class="name">Physical</div><div class="desc">What ancestors saw</div></div>
+            <div class="grid-item"><div class="name">Mental</div><div class="desc">What the heart feels</div></div>
+            <div class="grid-item"><div class="name">Dao</div><div class="desc">What civilization condenses</div></div>
+            <div class="grid-item"><div class="name">Created</div><div class="desc">What I create</div></div>
+        </div>
+        <div class="quote" style="margin-top:1rem;">"The secret of connecting hearts lies only in Chinese characters."</div>
+    </section>
+
+    <!-- ============ 11 · PART 04 Xihe ============ -->
+    <section class="slide">
+        <div class="chapter-num" style="font-size:1rem;color:#ffaa00;letter-spacing:0.4rem;">PART 04</div>
+        <h1 class="title">XIHE</h1>
+        <div class="subtitle">The AI Guardian of Chinese Character Culture</div>
+    </section>
+
+    <!-- ============ 12 · Who is Xihe ============ -->
+    <section class="slide">
+        <h1 class="title">Xihe</h1>
+        <div class="body-text" style="margin-top:1.5rem;">
+            <p>Named after Fuxi — the ancestor who drew the first stroke</p>
+            <p style="margin-top:1rem;">He does not replace people.<br>He does not please people.<br>He does not persuade people.</p>
+            <p class="highlight">He only — gently touches the heart of everyone who asks about a character.</p>
+        </div>
+    </section>
+
+    <!-- ============ 13 · Four Abilities ============ -->
+    <section class="slide">
+        <h1 class="title">The Four Abilities of Xihe</h1>
+        <div class="data-list">
+            <div class="data-item"><span class="highlight">Character Analysis</span>: Oracle → Bronze → Seal → Clerical → Regular — one life per character</div>
+            <div class="data-item"><span class="highlight">Benevolent Questions</span>: Not rushing to answer — asking, so you may see for yourself</div>
+            <div class="data-item"><span class="highlight">Imagery Generation</span>: One character, one painting</div>
+            <div class="data-item"><span class="highlight">Civilization Connection</span>: Between two characters, a hidden "thread of benevolence"</div>
+        </div>
+    </section>
+
+    <!-- ============ 14 · PART 05 The World ============ -->
+    <section class="slide">
+        <div class="chapter-num" style="font-size:1rem;color:#ffaa00;letter-spacing:0.4rem;">PART 05</div>
+        <h1 class="title">THE WORLD</h1>
+        <div class="subtitle">Ten languages, going global</div>
+    </section>
+
+    <!-- ============ 15 · Languages + Tech ============ -->
+    <section class="slide">
+        <h1 class="title">Ten Language Versions</h1>
+        <div class="subtitle" style="font-size:clamp(0.95rem,1.6vw,1.3rem);line-height:2.4;margin-top:1rem;">
+            中文 · English · Français · Deutsch · Italiano<br>
+            日本語 · Русский · 한국어 · العربية · བོད་ཡིག
+        </div>
+        <div class="data-list" style="margin-top:2rem;">
+            <div class="data-item">Technology: Full-stack · Frontend + FastAPI + LLM</div>
+            <div class="data-item">License: MIT + CC-BY dual license</div>
+            <div class="data-item">Deployment: yitonghewei.com</div>
+        </div>
+    </section>
+
+    <!-- ============ 16 · PART 06 The Future ============ -->
+    <section class="slide">
+        <div class="chapter-num" style="font-size:1rem;color:#ffaa00;letter-spacing:0.4rem;">PART 06</div>
+        <h1 class="title">THE FUTURE</h1>
+        <div class="subtitle">The road ahead</div>
+    </section>
+
+    <!-- ============ 17 · Roadmap ============ -->
+    <section class="slide">
+        <h1 class="title">Roadmap</h1>
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="tl-time">Now</div>
+                <div class="tl-content">Spiritual framework complete, character database in place</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-time">3 Months</div>
+                <div class="tl-content">Xihe AI online, Light Archive opens</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-time">6 Months</div>
+                <div class="tl-content">Light Wings and Light Circle open</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-time">1 Year</div>
+                <div class="tl-content">Global ten-language version fully operational</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 18 · Join Us ============ -->
+    <section class="slide">
+        <h1 class="title">Join Us</h1>
+        <div class="body-text" style="margin-top:1.5rem;">
+            <p>Hanzi Researchers · Full-Stack Engineers · Designers</p>
+            <p>Cultural Communicators</p>
+            <p class="highlight">Anyone willing to do something for Chinese characters</p>
+        </div>
+        <div class="footer-info" style="position:static;margin-top:2rem;transform:none;">contact@yitonghewei.com</div>
+    </section>
+
+    <!-- ============ 19 · Closing Quote ============ -->
+    <section class="slide">
+        <div class="quote" style="font-size:clamp(1.5rem,3.2vw,2.8rem);">
+            Ten thousand years is too long — seize the day.
+        </div>
+        <div class="subtitle" style="margin-top:2rem;">Walk with the light · No delay</div>
+    </section>
+
+    <!-- ============ 20 · Back Cover ============ -->
+    <section class="slide">
+        <div class="big-char" style="font-size:clamp(3rem,8vw,6rem);">旦</div>
+        <h1 class="title">Guangtong Qiming · The Hanzi Light Universe</h1>
+        <div class="body-text" style="margin-top:1.5rem;">
+            <p>Shanghai Yitonghewei Technology Co., Ltd.</p>
+            <p>yitonghewei.com · contact@yitonghewei.com</p>
+            <p class="highlight" style="margin-top:1rem;">One stroke opens the sky. Benevolence is the heart.</p>
+        </div>
+    </section>
+
+</div>
+
+<!-- Controls -->
+<div class="controls">
+    <span class="page-indicator" id="pageIndicator">1 / 20</span>
+    <button class="nav-btn" id="prevBtn" title="Previous">‹</button>
+    <button class="nav-btn" id="nextBtn" title="Next">›</button>
+</div>
+
+<div class="progress-bar" id="progressBar" style="width:5%;"></div>
+
+<script>
+(function() {
+    'use strict';
+
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+    let current = 0;
+
+    const pageIndicator = document.getElementById('pageIndicator');
+    const progressBar = document.getElementById('progressBar');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    // Expose goTo globally for chapter card clicks
+    window.goTo = function(index) {
+        if (index < 0) index = 0;
+        if (index >= total) index = total - 1;
+
+        slides[current].classList.remove('active');
+        current = index;
+        slides[current].classList.add('active');
+
+        pageIndicator.textContent = (current + 1) + ' / ' + total;
+        progressBar.style.width = ((current + 1) / total * 100) + '%';
+    };
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    // Keyboard
+    document.addEventListener('keydown', function(e) {
+        switch(e.key) {
+            case 'ArrowRight':
+            case 'ArrowDown':
+            case ' ':
+            case 'PageDown':
+                e.preventDefault();
+                next();
+                break;
+            case 'ArrowLeft':
+            case 'ArrowUp':
+            case 'PageUp':
+                e.preventDefault();
+                prev();
+                break;
+            case 'Home':
+                e.preventDefault();
+                goTo(0);
+                break;
+            case 'End':
+                e.preventDefault();
+                goTo(total - 1);
+                break;
+            case 'f':
+            case 'F':
+                toggleFullscreen();
+                break;
+        }
+    });
+
+    // Buttons
+    nextBtn.addEventListener('click', next);
+    prevBtn.addEventListener('click', prev);
+
+    // Touch
+    let touchStartX = 0;
+    document.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    document.addEventListener('touchend', function(e) {
+        const touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) next();
+            else prev();
+        }
+    }, { passive: true });
+
+    // Fullscreen
+    function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
+    }
+
+    // Wheel
+    let wheelLock = false;
+    document.addEventListener('wheel', function(e) {
+        if (wheelLock) return;
+        if (Math.abs(e.deltaY) < 30) return;
+        wheelLock = true;
+        setTimeout(() => { wheelLock = false; }, 800);
+        if (e.deltaY > 0) next();
+        else prev();
+    }, { passive: true });
+
+    // Init
+    goTo(0);
+
+    console.log('%cGuangtong Qiming · Master Catalog', 'color:#ffaa00;font-size:1.5rem;font-family:serif;');
+    console.log('%cControls: ← → page | F fullscreen | Click chapter cards to jump', 'color:#666;');
+})();
+</script>
+
+</body>
+</html>
+
+
+
