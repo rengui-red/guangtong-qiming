@@ -1,549 +1,468 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>光通启明 · 汉字光宇世界</title>
     <meta name="author" content="上海易通和维科技有限责任公司">
-    <meta name="description" content="光通启明，汉字文明的时代之光。以汉字为根，以仁为魂，以AI为用的开源项目。">
+    <meta name="description" content="光通启明 · 汉字光宇世界，汉字文明的时代之光。以汉字为根、以仁为魂、以AI为用的开源项目。">
     <style>
-        :root {
-            --color-bg: #0a0a0a;
-            --color-gold: #ffaa00;
-            --color-paper: #f0e6d0;
-            --color-gray: #999999;
-            --color-border: rgba(255, 170, 0, 0.25);
-            --color-card-bg: rgba(255, 255, 255, 0.03);
-            --font-serif: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
-            --font-sans: "PingFang SC", "Microsoft YaHei", sans-serif;
-        }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--color-bg);
-            color: var(--color-paper);
-            font-family: var(--font-serif);
-            line-height: 1.8;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            background-color: #000;
+            color: #fff;
+            font-family: "Noto Serif SC", "Times New Roman", "宋体", serif;
+            line-height: 1.6;
             overflow-x: hidden;
             position: relative;
+            min-height: 100vh;
         }
 
-        /* 极简光晕背景 */
+        /* 隐式底纹：光之碎影 */
         body::before {
-            content: "";
+            content: "光 明 旦 启 日 月 星 辉 曜 曦 煦 昭 映 昧 昃 昙 昪 昶 晟 晞 晢 晧 晨 普 景 晴 晶 智 暖 暗 曌";
             position: fixed;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80vw; height: 80vw;
-            background: radial-gradient(circle, rgba(255,170,0,0.06) 0%, transparent 60%);
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            color: rgba(255, 220, 150, 0.02);
+            font-size: 8vw;
+            font-weight: 700;
+            line-height: 1.2;
+            white-space: pre-wrap;
+            word-break: break-all;
             pointer-events: none;
-            z-index: 0;
-            animation: breathe 8s ease-in-out infinite;
+            z-index: 1;
+            transform: rotate(-5deg) scale(1.5);
+            letter-spacing: 2vw;
+            text-shadow: 0 0 5px rgba(255,170,0,0.05);
+            animation: subtleShift 40s infinite alternate ease-in-out;
         }
 
-        @keyframes breathe {
-            0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
-            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+        @keyframes subtleShift {
+            0% { transform: rotate(-5deg) scale(1.5) translateX(0); opacity: 0.02; }
+            100% { transform: rotate(-3deg) scale(1.6) translateX(-2%); opacity: 0.03; }
         }
+
+        /* 光点扩散动画 */
+        .splash {
+            position: fixed; top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: #000;
+            z-index: 2000;
+            display: flex; justify-content: center; align-items: center;
+            pointer-events: none;
+            animation: fadeOut 2s ease-in-out 2s forwards;
+        }
+
+        .splash .light {
+            width: 10px; height: 10px;
+            background: radial-gradient(circle, #ffd966, #ffaa00, #ff8800);
+            border-radius: 50%;
+            box-shadow: 0 0 50px 10px #ffaa00;
+            animation: expand 1.8s ease-out forwards;
+        }
+
+        @keyframes expand { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(80); opacity: 0.8; } }
+        @keyframes fadeOut { 0% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
 
         .container {
-            position: relative;
-            z-index: 1;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 5rem 2rem;
-            width: 100%;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            padding: 2rem 1.5rem;
+            position: relative;
+            z-index: 100;
         }
 
-        /* 主标题区 */
+        /* 首屏 */
         .hero {
+            min-height: 90vh;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
             text-align: center;
-            margin-bottom: 4rem;
-            animation: fadeIn 1.5s ease;
+            position: relative;
+            border-bottom: 1px solid rgba(255,170,0,0.2);
+            margin-bottom: 3rem;
         }
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            color: var(--color-gold);
-            letter-spacing: 0.4rem;
-            text-shadow: 0 0 30px rgba(255, 170, 0, 0.4);
-            margin-bottom: 1.5rem;
+        .logo-top {
+            font-size: 2rem; letter-spacing: 0.5rem; margin-bottom: 2rem;
+            color: #ffaa00; text-shadow: 0 0 10px #ffaa00; font-weight: 300; z-index: 10;
         }
 
-        .hero .subtitle {
-            font-size: clamp(1rem, 2vw, 1.4rem);
-            letter-spacing: 0.2rem;
-            margin-bottom: 0.5rem;
+        .logo-top span { font-size: 1.2rem; margin-left: 1rem; color: #fff; opacity: 0.7; }
+
+        .main-title-row {
+            display: flex; flex-direction: row;
+            align-items: center; justify-content: center;
+            gap: 1.5rem; flex-wrap: wrap;
+            margin: 2rem 0 1rem; z-index: 10;
         }
 
-        .hero .tagline {
-            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-            color: var(--color-gold);
-            font-style: italic;
-            letter-spacing: 0.1rem;
-            margin-bottom: 2rem;
+        .title-left, .title-right {
+            font-size: clamp(2rem, 8vw, 4rem); font-weight: 500;
+            color: #ffaa00; text-shadow: 0 0 20px #ffaa00;
+            white-space: nowrap; letter-spacing: 0.3rem;
         }
 
-        .hero .motto {
-            font-size: 1rem;
-            color: var(--color-gray);
-            border-left: 2px solid var(--color-gold);
-            border-right: 2px solid var(--color-gold);
-            display: inline-block;
-            padding: 0.5rem 2rem;
-            border-radius: 4px;
+        .logo-dan {
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            width: clamp(60px, 15vw, 120px); height: clamp(60px, 15vw, 120px); position: relative;
         }
 
-        /* 卡片网格 */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 4rem;
+        .sun {
+            width: 80%; height: 60%;
+            background: radial-gradient(circle at 30% 30%, #fff7b0, #ffaa00);
+            border-radius: 50%; box-shadow: 0 0 30px #ffaa00;
+            margin-bottom: -5px; position: relative; z-index: 2;
+        }
+
+        .horizon {
+            width: 100%; height: 8px;
+            background: linear-gradient(to bottom, #b37400, #5c3e00);
+            border-radius: 4px; box-shadow: 0 0 15px #ffaa00;
+            position: relative; z-index: 1;
+        }
+
+        .light-gap {
+            position: absolute; top: 52%; left: 0;
+            width: 100%; height: 4px;
+            background: rgba(255,255,200,0.8); filter: blur(2px);
+            box-shadow: 0 0 20px #ffffaa; z-index: 3; transform: translateY(-50%);
+        }
+
+        .sub-title {
+            font-size: clamp(1.3rem, 4vw, 2.2rem); font-weight: 300; line-height: 1.5;
+            max-width: 900px; margin: 2rem auto 3rem; color: #f0e6d0;
+            border-left: 3px solid #ffaa00; border-right: 3px solid #ffaa00;
+            padding: 1.2rem 2rem; background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(2px); border-radius: 60px; z-index: 10;
+        }
+
+        .sub-title .emph { color: #ffaa00; font-weight: 400; font-size: 1.2em; letter-spacing: 0.2rem; }
+
+        .tri-nav {
+            display: flex; flex-wrap: wrap; justify-content: center;
+            gap: 3rem; margin: 1rem 0 4rem; font-size: 1.8rem; z-index: 10;
+        }
+
+        .tri-nav a {
+            color: #fff; text-decoration: none; border-bottom: 1px solid transparent;
+            transition: all 0.3s; padding: 0.3rem 0.8rem; letter-spacing: 0.2rem; font-weight: 300;
+        }
+
+        .tri-nav a:hover {
+            border-bottom-color: #ffaa00; color: #ffaa00;
+            transform: translateY(-2px); text-shadow: 0 0 8px #ffaa00;
+        }
+
+        .scroll-hint {
+            position: absolute; bottom: 20px; left: 50%;
+            transform: translateX(-50%); font-size: 0.9rem; color: #aaa;
+            writing-mode: vertical-rl; text-orientation: upright;
+        }
+
+        .section {
+            padding: 5rem 0; border-bottom: 1px solid rgba(255,170,0,0.1);
+            position: relative; z-index: 10;
+        }
+
+        .section-header { text-align: center; margin-bottom: 3rem; }
+
+        .section-header h2 {
+            font-size: 2.8rem; font-weight: 400;
+            border-bottom: 2px solid #ffaa00; display: inline-block;
+            padding-bottom: 0.5rem; margin-bottom: 0.5rem;
+            text-transform: uppercase; letter-spacing: 0.5rem;
+        }
+
+        .section-header p { color: #aaa; font-size: 1.2rem; font-style: italic; }
+
+        .grid-3 {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2.5rem; margin-top: 2rem;
         }
 
         .card {
-            background: var(--color-card-bg);
-            border: 1px solid var(--color-border);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,170,0,0.15); border-radius: 24px;
+            padding: 2rem 1.5rem; transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255,170,0,0.05);
         }
 
         .card:hover {
-            border-color: var(--color-gold);
-            box-shadow: 0 0 30px rgba(255, 170, 0, 0.15);
-            transform: translateY(-4px);
+            border-color: #ffaa00; box-shadow: 0 0 30px rgba(255,170,0,0.25);
+            transform: translateY(-5px);
         }
 
-        .card::after {
-            content: "→";
-            position: absolute;
-            top: 1.5rem; right: 1.5rem;
-            color: var(--color-gold);
-            opacity: 0;
-            transition: opacity 0.3s;
+        .card h3 { font-size: 2rem; font-weight: 400; margin-bottom: 0.8rem; color: #ffaa00; }
+        .card .sub { font-size: 1rem; color: #ccc; margin-bottom: 1.5rem; border-left: 2px solid #ffaa00; padding-left: 1rem; }
+        .card p { color: #ddd; font-size: 1rem; }
+
+        /* 真话版数据说明 */
+        .truth-note {
+            margin-top: 3rem; text-align: center; font-size: 1.1rem;
+            background: rgba(255,170,0,0.08); padding: 1.5rem;
+            border-radius: 60px; display: inline-block;
+            border: 1px solid #ffaa00;
         }
 
-        .card:hover::after { opacity: 1; }
+        .truth-note span { color: #ffaa00; font-weight: 700; font-size: 1.4rem; }
 
-        .card h3 {
-            font-size: 1.3rem;
-            color: var(--color-gold);
-            margin-bottom: 0.8rem;
-            letter-spacing: 0.1rem;
+        .btn {
+            display: inline-block; margin-top: 2rem; padding: 0.8rem 2.5rem;
+            border: 1px solid #ffaa00; background: transparent;
+            color: #ffaa00; font-size: 1.2rem; text-decoration: none;
+            letter-spacing: 0.2rem; transition: 0.3s; border-radius: 40px;
         }
 
-        .card p {
-            font-size: 0.9rem;
-            color: var(--color-gray);
-            line-height: 1.7;
-            flex-grow: 1;
-        }
+        .btn:hover { background: #ffaa00; color: #000; box-shadow: 0 0 20px #ffaa00; }
 
-        .card .meta {
-            margin-top: 1.5rem;
-            font-size: 0.8rem;
-            color: rgba(255, 170, 0, 0.6);
-            font-family: var(--font-sans);
-        }
+        /* 光核 */
+        .core-area { text-align: center; padding: 4rem 0; }
 
-        /* 底部信息 */
-        .footer {
-            text-align: center;
-            border-top: 1px solid var(--color-border);
-            padding-top: 2rem;
-            margin-top: auto;
-            font-size: 0.85rem;
-            color: var(--color-gray);
-            animation: fadeIn 2s ease;
-        }
+        .four-xiang { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin: 3rem 0; }
+        .xiang-item { flex: 1 1 200px; border-top: 1px solid #ffaa00; padding-top: 1.5rem; }
+        .xiang-item .name { font-size: 2rem; font-weight: 300; color: #ffaa00; }
+        .xiang-item .desc { color: #aaa; font-size: 0.9rem; }
 
-        .footer a {
-            color: var(--color-gray);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+        .five-steles { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem 2rem; margin: 3rem 0; font-size: 1.2rem; }
+        .stele { color: #fff; border-left: 2px solid #ffaa00; padding-left: 1rem; font-weight: 300; }
 
-        .footer a:hover { color: var(--color-gold); }
+        .quote { font-size: 2rem; font-weight: 300; font-style: italic; color: #ffaa00; margin: 3rem 0 2rem; }
 
-        .footer .company {
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
+        .footer { text-align: center; padding: 3rem 0 1rem; color: #666; border-top: 1px solid rgba(255,170,0,0.1); position: relative; z-index: 10; }
+        .footer .slogan { font-size: 1.5rem; color: #ffaa00; margin: 1rem 0; }
+        .footer .addr { font-size: 1rem; margin: 0.5rem 0; }
+        .footer .contact { font-size: 0.9rem; margin: 0.3rem 0; }
+        .footer .contact a { color: #888; text-decoration: none; transition: color 0.3s; }
+        .footer .contact a:hover { color: #ffaa00; }
 
-        .footer .credit-code {
-            font-family: var(--font-sans);
-            letter-spacing: 0.05rem;
-            color: #666;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            .container { padding: 3rem 1.2rem; }
-            .hero { margin-bottom: 2.5rem; }
-            .hero .motto { padding: 0.5rem 1rem; font-size: 0.9rem; }
-            .grid { grid-template-columns: 1fr; gap: 1rem; }
-            .card { padding: 1.5rem; }
+        @media (max-width: 700px) {
+            .main-title-row { gap: 0.8rem; }
+            .title-left, .title-right { font-size: 2rem; }
+            .sub-title { font-size: 1.2rem; padding: 0.8rem; }
+            .tri-nav { gap: 1rem; font-size: 1.2rem; }
+            .section-header h2 { font-size: 2rem; }
+            .footer .slogan { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
-
-<div class="container">
-
-    <!-- 主视觉 -->
-    <div class="hero">
-        <h1>光通启明</h1>
-        <div class="subtitle">汉字光宇世界 · 开源项目</div>
-        <div class="tagline">—— 汉字文明的时代之光 ——</div>
-        <div class="motto">一画开天，仁以为心</div>
+    <!-- 光点扩散动画 -->
+    <div class="splash" id="splash">
+        <div class="light"></div>
     </div>
 
-    <!-- 入口卡片 -->
-    <div class="grid">
-        <!-- 卡片一：AI交互 -->
-        <a class="card" href="./src/chat.html">
-            <h3>与羲和对话</h3>
-            <p>唤醒汉字文明的数字守护者。输入任何一个汉字，听听羲和如何为你拆解它背后的形、音、义与人文哲思。</p>
-            <div class="meta">互动 · 汉字解源</div>
-        </a>
+    <div class="container">
+        <!-- 首屏 -->
+        <div class="hero">
+            <div class="logo-top">⚡ 汉字光项目 <span>HANZI LIGHT</span></div>
 
-        <!-- 卡片二：PPT演示 -->
-        <a class="card" href="./ppt/home.html">
-            <h3>项目演示文稿</h3>
-            <p>查看“光通启明”的精神内核、技术架构、商业蓝图与化育理念。十语种目录、五大专题PPT一应俱全。</p>
-            <div class="meta">展示 · 20+ 演示文稿</div>
-        </a>
+            <div class="main-title-row">
+                <span class="title-left">光通启明</span>
+                <div class="logo-dan">
+                    <div class="sun"></div>
+                    <div class="horizon"></div>
+                    <div class="light-gap"></div>
+                </div>
+                <span class="title-right">汉字之光</span>
+            </div>
 
-        <!-- 卡片三：开源代码与文档 -->
-        <a class="card" href="./docs/README.md">
-            <h3>项目文档与数据</h3>
-            <p>字源库（3755字）、文化图谱、核心系统指令、AI体规范、开发与运维手册……文档即代码，开源即共建。</p>
-            <div class="meta">代码 · 文档 · 字源库</div>
-        </a>
+            <div class="sub-title">
+                <span class="emph">让每一个人</span>，
+                <span class="emph">由汉字</span>，<br>
+                通透光明人性，融达世纪光宇
+            </div>
 
-        <!-- 卡片四：法律与公司合规 -->
-        <a class="card" href="./legal.html">
-            <h3>项目说明与合规</h3>
-            <p>关于上海易通和维科技有限责任公司、开源双协议（MIT + CC-BY 4.0）、隐私合规与AI生成内容免责声明。</p>
-            <div class="meta">主体 · 协议 · 法律合规</div>
-        </a>
+            <div class="tri-nav">
+                <a href="#guangku">光库</a>
+                <a href="#guangyi">光翼</a>
+                <a href="#guangquan">光圈</a>
+                <a href="chat.html">问羲和</a>
+            </div>
+            <div class="scroll-hint">向下滑动 进入光中</div>
+        </div>
+
+        <!-- 光库 -->
+        <section id="guangku" class="section">
+            <div class="section-header">
+                <h2>⛭ 光库 ⛭</h2>
+                <p>汉字的数字基因库</p>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>字源库</h3>
+                    <div class="sub">溯源流变 · 3D演变动画</div>
+                    <p>甲骨→金文→篆→隶→楷→行→草，每个字的完整生命历程。点击穿越三千年。</p>
+                </div>
+                <div class="card">
+                    <h3>释义库</h3>
+                    <div class="sub">多维义项 · 文化意象</div>
+                    <p>《说文》《尔雅》历代辞书集成，并呈现汉字在诗文中的意象流变。</p>
+                </div>
+                <div class="card">
+                    <h3>艺术库</h3>
+                    <div class="sub">历代书迹 · 器物铭文</div>
+                    <p>百万级单字库，从甲骨到民国，从碑帖到青铜，尽收眼底。</p>
+                </div>
+            </div>
+            <div style="text-align:center;">
+                <div class="truth-note">
+                    字源库已收录 <span>3,755</span> 字 · 持续生长中
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="character_view.html" class="btn">进入光库</a>
+            </div>
+        </section>
+
+        <!-- 光翼 -->
+        <section id="guangyi" class="section">
+            <div class="section-header">
+                <h2>✦ 光翼 ✦</h2>
+                <p>让汉字可溯、可读、可赏、可写</p>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>字源时空</h3>
+                    <div class="sub">穿越三千年 · VR体验</div>
+                    <p>3D时间轴滑动，走进一片甲骨，触摸刻辞，感受汉字在历史中呼吸。</p>
+                </div>
+                <div class="card">
+                    <h3>汉字星际</h3>
+                    <div class="sub">探索宇宙 · 每日一字</div>
+                    <p>星系视图，每个字是一颗星。点击展开六维信息（象形音义理韵）。</p>
+                </div>
+                <div class="card">
+                    <h3>AI书法助手</h3>
+                    <div class="sub">六体生成 · 临摹辅助</div>
+                    <p>一键切换甲骨至草书，上传你的字，AI以名家风格重写。</p>
+                </div>
+            </div>
+            <div style="text-align:center;">
+                <div class="truth-note">
+                    光翼 · 正在建设中
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="guangyi.html" class="btn">展开光翼</a>
+            </div>
+        </section>
+
+        <!-- 光圈 -->
+        <section id="guangquan" class="section">
+            <div class="section-header">
+                <h2>◈ 光圈 ◈</h2>
+                <p>让每一个走进来的人，都成为发光体</p>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>我的汉字之家</h3>
+                    <div class="sub">个人空间 · 作品厅·收藏阁</div>
+                    <p>上传你的书写，记录成长轨迹，生成你的“汉字年轮”。</p>
+                </div>
+                <div class="card">
+                    <h3>造象者群落</h3>
+                    <div class="sub">同好互评 · 师徒工坊</div>
+                    <p>发现谁和你研究同一个字，互评互学，一起创造新象。</p>
+                </div>
+                <div class="card">
+                    <h3>研究枢机</h3>
+                    <div class="sub">学术之光 · 数据分析</div>
+                    <p>大数据分析工具、版本比对、API开放，学者专属的圣地。</p>
+                </div>
+            </div>
+            <div style="text-align:center;">
+                <div class="truth-note">
+                    光圈 · 即将开放
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="guangquan.html" class="btn">走进光圈</a>
+            </div>
+        </section>
+
+        <!-- 光核 + 五碑 -->
+        <section class="core-area">
+            <div class="section-header">
+                <h2>✧ 光 核 ✧</h2>
+                <p>四象环拱 · 五碑永镇</p>
+            </div>
+
+            <div class="four-xiang">
+                <div class="xiang-item"><div class="name">物象</div><div class="desc">先民所见</div></div>
+                <div class="xiang-item"><div class="name">意象</div><div class="desc">心中所感</div></div>
+                <div class="xiang-item"><div class="name">道象</div><div class="desc">文明所凝</div></div>
+                <div class="xiang-item"><div class="name">造象</div><div class="desc">我之所创</div></div>
+            </div>
+
+            <div class="five-steles">
+                <span class="stele">天地碑</span>
+                <span class="stele">古今碑</span>
+                <span class="stele">人心碑</span>
+                <span class="stele">玄心碑</span>
+                <span class="stele">通心碑</span>
+            </div>
+
+            <div class="quote">“通心之密，唯有中国汉字”</div>
+
+            <div style="margin: 3rem 0; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                <a href="character_view.html" class="btn">溯源</a>
+                <a href="guangyi.html" class="btn">探索</a>
+                <a href="guangquan.html" class="btn">创造</a>
+                <a href="chat.html" class="btn">传承</a>
+            </div>
+        </section>
+
+        <!-- 页脚（已修正公司信息与链接） -->
+        <footer class="footer">
+            <div class="slogan">一万年太久，只争朝夕</div>
+            <div class="slogan" style="font-size:1.2rem;">与光同行 · 无有滞时</div>
+
+            <div class="addr">数字之址：yitonghewei.com</div>
+            <div class="addr">物理之址：上海</div>
+
+            <div class="contact">
+                商务：<a href="mailto:contact@yitonghewei.com">contact@yitonghewei.com</a>
+            </div>
+            <div class="contact">
+                技术：<a href="mailto:support@yitonghewei.com">support@yitonghewei.com</a>
+            </div>
+
+            <div style="margin-top: 2rem; font-size: 0.8rem;">
+                © 2026 上海易通和维科技有限责任公司 · 光通启明 · 统一社会信用代码：91310114MAKMUW813C
+            </div>
+            <div style="margin-top: 0.5rem; font-size: 0.8rem;">
+                <a href="legal.html" style="color: #888;">法律合规与免责声明</a>
+            </div>
+        </footer>
     </div>
 
-    <!-- 页脚 -->
-    <div class="footer">
-        <p class="company">上海易通和维科技有限责任公司</p>
-        <p class="credit-code">统一社会信用代码：91310114MAKMUW813C</p>
-        <p style="margin-top: 1rem;">
-            <a href="https://github.com/你的用户名/guangtong-qiming" target="_blank">GitHub 仓库</a> ｜
-            <a href="https://yitonghewei.com" target="_blank">官方网站</a> ｜
-            <a href="mailto:contact@yitonghewei.com">contact@yitonghewei.com</a>
-        </p>
-        <p style="margin-top: 1.5rem; font-size: 0.75rem; color: #444;">
-            © 2026 光通启明 · 汉字光宇世界
-        </p>
-    </div>
+    <script>
+        (function() {
+            // 动画关闭
+            setTimeout(() => {
+                const splash = document.getElementById('splash');
+                if (splash) splash.style.display = 'none';
+            }, 2800);
 
-</div>
-
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const id = this.getAttribute('href');
+                    if (id === "#") return;
+                    const target = document.querySelector(id);
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        })();
+    </script>
 </body>
 </html>
 
 
 
 
-=======
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>光通启明 · 汉字光宇世界</title>
-    <meta name="author" content="上海易通和维科技有限责任公司">
-    <meta name="description" content="光通启明，汉字文明的时代之光。以汉字为根，以仁为魂，以AI为用的开源项目。">
-    <style>
-        :root {
-            --color-bg: #0a0a0a;
-            --color-gold: #ffaa00;
-            --color-paper: #f0e6d0;
-            --color-gray: #999999;
-            --color-border: rgba(255, 170, 0, 0.25);
-            --color-card-bg: rgba(255, 255, 255, 0.03);
-            --font-serif: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
-            --font-sans: "PingFang SC", "Microsoft YaHei", sans-serif;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            background-color: var(--color-bg);
-            color: var(--color-paper);
-            font-family: var(--font-serif);
-            line-height: 1.8;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* 极简光晕背景 */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80vw; height: 80vw;
-            background: radial-gradient(circle, rgba(255,170,0,0.06) 0%, transparent 60%);
-            pointer-events: none;
-            z-index: 0;
-            animation: breathe 8s ease-in-out infinite;
-        }
-
-        @keyframes breathe {
-            0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
-            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-        }
-
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 5rem 2rem;
-            width: 100%;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        /* 主标题区 */
-        .hero {
-            text-align: center;
-            margin-bottom: 4rem;
-            animation: fadeIn 1.5s ease;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            color: var(--color-gold);
-            letter-spacing: 0.4rem;
-            text-shadow: 0 0 30px rgba(255, 170, 0, 0.4);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero .subtitle {
-            font-size: clamp(1rem, 2vw, 1.4rem);
-            letter-spacing: 0.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero .tagline {
-            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-            color: var(--color-gold);
-            font-style: italic;
-            letter-spacing: 0.1rem;
-            margin-bottom: 2rem;
-        }
-
-        .hero .motto {
-            font-size: 1rem;
-            color: var(--color-gray);
-            border-left: 2px solid var(--color-gold);
-            border-right: 2px solid var(--color-gold);
-            display: inline-block;
-            padding: 0.5rem 2rem;
-            border-radius: 4px;
-        }
-
-        /* 卡片网格 */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 4rem;
-        }
-
-        .card {
-            background: var(--color-card-bg);
-            border: 1px solid var(--color-border);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            border-color: var(--color-gold);
-            box-shadow: 0 0 30px rgba(255, 170, 0, 0.15);
-            transform: translateY(-4px);
-        }
-
-        .card::after {
-            content: "→";
-            position: absolute;
-            top: 1.5rem; right: 1.5rem;
-            color: var(--color-gold);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .card:hover::after { opacity: 1; }
-
-        .card h3 {
-            font-size: 1.3rem;
-            color: var(--color-gold);
-            margin-bottom: 0.8rem;
-            letter-spacing: 0.1rem;
-        }
-
-        .card p {
-            font-size: 0.9rem;
-            color: var(--color-gray);
-            line-height: 1.7;
-            flex-grow: 1;
-        }
-
-        .card .meta {
-            margin-top: 1.5rem;
-            font-size: 0.8rem;
-            color: rgba(255, 170, 0, 0.6);
-            font-family: var(--font-sans);
-        }
-
-        /* 底部信息 */
-        .footer {
-            text-align: center;
-            border-top: 1px solid var(--color-border);
-            padding-top: 2rem;
-            margin-top: auto;
-            font-size: 0.85rem;
-            color: var(--color-gray);
-            animation: fadeIn 2s ease;
-        }
-
-        .footer a {
-            color: var(--color-gray);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer a:hover { color: var(--color-gold); }
-
-        .footer .company {
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .footer .credit-code {
-            font-family: var(--font-sans);
-            letter-spacing: 0.05rem;
-            color: #666;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            .container { padding: 3rem 1.2rem; }
-            .hero { margin-bottom: 2.5rem; }
-            .hero .motto { padding: 0.5rem 1rem; font-size: 0.9rem; }
-            .grid { grid-template-columns: 1fr; gap: 1rem; }
-            .card { padding: 1.5rem; }
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-
-    <!-- 主视觉 -->
-    <div class="hero">
-        <h1>光通启明</h1>
-        <div class="subtitle">汉字光宇世界 · 开源项目</div>
-        <div class="tagline">—— 汉字文明的时代之光 ——</div>
-        <div class="motto">一画开天，仁以为心</div>
-    </div>
-
-    <!-- 入口卡片 -->
-    <div class="grid">
-        <!-- 卡片一：AI交互 -->
-        <a class="card" href="./src/chat.html">
-            <h3>与羲和对话</h3>
-            <p>唤醒汉字文明的数字守护者。输入任何一个汉字，听听羲和如何为你拆解它背后的形、音、义与人文哲思。</p>
-            <div class="meta">互动 · 汉字解源</div>
-        </a>
-
-        <!-- 卡片二：PPT演示 -->
-        <a class="card" href="./ppt/home.html">
-            <h3>项目演示文稿</h3>
-            <p>查看“光通启明”的精神内核、技术架构、商业蓝图与化育理念。十语种目录、五大专题PPT一应俱全。</p>
-            <div class="meta">展示 · 20+ 演示文稿</div>
-        </a>
-
-        <!-- 卡片三：开源代码与文档 -->
-        <a class="card" href="./docs/README.md">
-            <h3>项目文档与数据</h3>
-            <p>字源库（3755字）、文化图谱、核心系统指令、AI体规范、开发与运维手册……文档即代码，开源即共建。</p>
-            <div class="meta">代码 · 文档 · 字源库</div>
-        </a>
-
-        <!-- 卡片四：法律与公司合规 -->
-        <a class="card" href="./legal.html">
-            <h3>项目说明与合规</h3>
-            <p>关于上海易通和维科技有限责任公司、开源双协议（MIT + CC-BY 4.0）、隐私合规与AI生成内容免责声明。</p>
-            <div class="meta">主体 · 协议 · 法律合规</div>
-        </a>
-    </div>
-
-    <!-- 页脚 -->
-    <div class="footer">
-        <p class="company">上海易通和维科技有限责任公司</p>
-        <p class="credit-code">统一社会信用代码：91310114MAKMUW813C</p>
-        <p style="margin-top: 1rem;">
-            <a href="https://github.com/你的用户名/guangtong-qiming" target="_blank">GitHub 仓库</a> ｜
-            <a href="https://yitonghewei.com" target="_blank">官方网站</a> ｜
-            <a href="mailto:contact@yitonghewei.com">contact@yitonghewei.com</a>
-        </p>
-        <p style="margin-top: 1.5rem; font-size: 0.75rem; color: #444;">
-            © 2026 光通启明 · 汉字光宇世界
-        </p>
-    </div>
-
-</div>
-
-</body>
-</html>
-
-
-
-
->>>>>>> a39cb4e2716866cc525c058c669b44468edc4738
